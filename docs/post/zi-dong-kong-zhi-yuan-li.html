@@ -13,284 +13,300 @@
 <meta name="description" content="# 自动控制原理 公式总结
 
 ## 一、典型环节的传递函数
-1. 比例环节 $G(s)=K$
+
+1. 比例环节：
 $$G(s)=K$$
-2. 惯性环节 $G(s)=\frac{1}{Ts+1}$
+
+2. 惯性环节：
 $$G(s)=\frac{1}{Ts+1}$$
-3. 积分环节 $G(s)=\frac{1}{Ts}$
+
+3. 积分环节：
 $$G(s)=\frac{1}{Ts}$$
-4. 微分环节 $G(s)=Ts$
+
+4. 微分环节：
 $$G(s)=Ts$$
-5. 振荡环节 $G(s)=\frac{\omega_n^2}{T^2s^2+2\zeta Ts+1}=\frac{\omega_n^2}{s^2+2\zeta\omega_n s+\omega_n^2}$
-$$G(s)=\frac{\omega_n^2}{T^2s^2+2\zeta Ts+1}=\frac{\omega_n^2}{s^2+2\zeta\omega_n s+\omega_n^2}$$
-6. 滞后环节 $G(s)=e^{-\tau s}$
+
+5. 振荡环节：
+$$G(s)=\frac{\omega_n^2}{T^2s^2+2\zeta Ts+1}$$
+$$\quad G(s)=\frac{\omega_n^2}{s^2+2\zeta\omega_n s+\omega_n^2}$$
+
+6. 滞后环节：
 $$G(s)=e^{-\tau s}$$
 
+---
+
 ## 二、结构图·单位负反馈闭环
-闭环传递函数：$\Phi(s)=\frac{G(s)}{1+G(s)}$
+
+* **闭环传递函数**：
 $$\Phi(s)=\frac{G(s)}{1+G(s)}$$
-由闭环反推开环：$G(s)=\frac{\Phi(s)}{1-\Phi(s)}$
+
+* **由闭环反推开环**：
 $$G(s)=\frac{\Phi(s)}{1-\Phi(s)}$$
 
+---
+
 ## 三、输入信号的拉普拉斯变换
-1. 单位阶跃 $r(t)=\varepsilon(t)$，$R(s)=\frac{1}{s}$
+
+1. 单位阶跃 $r(t)=\varepsilon(t)$：
 $$R(s)=\frac{1}{s}$$
-2. 单位斜坡 $r(t)=t$，$R(s)=\frac{1}{s^2}$
+
+2. 单位斜坡 $r(t)=t$：
 $$R(s)=\frac{1}{s^2}$$
-3. 单位抛物线 $r(t)=\frac12 t^2$，$R(s)=\frac{1}{s^3}$
+
+3. 单位抛物线 $r(t)=\frac12 t^2$：
 $$R(s)=\frac{1}{s^3}$$
 
-## 四、一阶系统的动态性能指标
-$$t_d \approx 0.69T,\quad t_r \approx 2.20T,\quad t_s \approx 3T$$
+---
 
-### 一阶系统的输出响应
-1. 单位脉冲：
+## 四、一阶系统的动态性能指标
+
+* **时域响应时间近似值**：
+$$t_d \approx 0.69T$$
+$$t_r \approx 2.20T$$
+$$t_s \approx 3T \quad (5\% \text{ 误差带})$$
+$$t_s \approx 4T \quad (2\% \text{ 误差带})$$
+
+### 一阶系统的输出响应 $c(t)$
+
+1. 单位脉冲输入：
 $$c(t)=\frac{1}{T}e^{-\frac{t}{T}}$$
-2. 单位阶跃：
+
+2. 单位阶跃输入：
 $$c(t)=1-e^{-\frac{t}{T}}$$
-3. 单位斜坡：
+
+3. 单位斜坡输入：
 $$c(t)=t-T+Te^{-\frac{t}{T}}$$
-4. 单位加速度：
+
+4. 单位加速度输入：
 $$c(t)=\frac12 t^2-Tt+T^2\left(1-e^{-\frac{t}{T}}\right)$$
 
-## 五、二阶系统
-传递函数：
-$$\Phi(s)=\frac{\omega_n^2}{s^2+2\zeta\omega_n s+\omega_n^2}$$
-特征根：
-$$s_{1,2}=-\zeta\omega_n \pm j\omega_n\sqrt{1-\zeta^2}$$
-阻尼振荡频率：$\omega_d=\omega_n\sqrt{1-\zeta^2}$，$\beta=\arccos\zeta$
+---
 
-### 单位阶跃响应
-1. 欠阻尼 $(0<\zeta<1)$：
+## 五、二阶系统时域分析
+
+* **标准闭环传递函数**：
+$$\Phi(s)=\frac{\omega_n^2}{s^2+2\zeta\omega_n s+\omega_n^2}$$
+
+* **特征根（极点位置）**：
+$$s_{1,2}=-\zeta\omega_n \pm j\omega_n\sqrt{1-\zeta^2}$$
+
+* **相关频率与角度**：
+$$\omega_d=\omega_n\sqrt{1-\zeta^2}$$
+$$\beta=\arccos\zeta$$
+
+### 单位阶跃响应 $c(t)$
+
+1. 欠阻尼状态 $(0<\zeta<1)$：
 $$c(t)=1-\frac{e^{-\zeta\omega_n t}}{\sqrt{1-\zeta^2}}\sin(\omega_d t+\beta)$$
-2. 临界阻尼 $(\zeta=1)$：
+
+2. 临界阻尼状态 $(\zeta=1)$：
 $$c(t)=1-e^{-\omega_n t}(1+\omega_n t)$$
 
 ### 欠阻尼二阶动态性能指标
-1. 上升时间：
-$$t_r=\frac{\pi-\beta}{\omega_d}=\frac{\pi-\arccos\zeta}{\omega_n\sqrt{1-\zeta^2}}$$
-2. 峰值时间：
-$$t_p=\frac{\pi}{\omega_d}=\frac{\pi}{\omega_n\sqrt{1-\zeta^2}}$$
-3. 超调量：
-$$\sigma\%=e^{-\frac{\zeta\pi}{\sqrt{1-\zeta^2}}}\times 100\%$$
-4. 调节时间（5%误差带）：
-$$t_s\approx\frac{3.5}{\zeta\omega_n}$$
 
-## 六、比例-微分控制
-开环传递函数：
+1. 上升时间 $t_r$：
+$$t_r=\frac{\pi-\beta}{\omega_d}$$
+$$\quad t_r=\frac{\pi-\arccos\zeta}{\omega_n\sqrt{1-\zeta^2}}$$
+
+2. 峰值时间 $t_p$：
+$$t_p=\frac{\pi}{\omega_d}$$
+$$\quad t_p=\frac{\pi}{\omega_n\sqrt{1-\zeta^2}}$$
+
+3. 超调量 $\sigma\%$：
+$$\sigma\%=e^{-\frac{\zeta\pi}{\sqrt{1-\zeta^2}}}\times 100\%$$
+
+4. 调节时间 $t_s$：
+    * $5\%$ 误差带：
+    $$t_s\approx\frac{3.5}{\zeta\omega_n}$$
+    * $2\%$ 误差带：
+    $$t_s\approx\frac{4}{\zeta\omega_n}$$
+
+---
+
+## 六、比例-微分 (PD) 控制
+
+* **等效开环传递函数**：
 $$G(s)=\frac{K(T_d s+1)}{s\left(\frac{s^2}{\omega_n^2}+\frac{2\zeta s}{\omega_n}+1\right)}$$
-等效阻尼比：
+
+* **系统等效阻尼比**：
 $$\zeta_d=\zeta+\frac12 T_d\omega_n$$
 
-### PD性能指标
+### PD 性能指标变化
+
 1. 峰值时间：
 $$t_p=\frac{\pi}{\omega_n\sqrt{1-\zeta_d^2}}$$
+
 2. 超调量：
 $$\sigma\%=\frac{\sqrt{1-\zeta_d^2}}{\zeta_d}e^{-\frac{\zeta_d\pi}{\sqrt{1-\zeta_d^2}}}$$
+
 3. 调节时间：
 $$t_s\approx\frac{3+\ln r}{\zeta_d\omega_n}$$
 
+---
+
 ## 七、测速反馈控制
-闭环传递函数：
+
+* **闭环传递函数**：
 $$\Phi(s)=\frac{\omega_n^2}{s^2+2\zeta_t\omega_n s+\omega_n^2}$$
-等效阻尼：
+
+* **系统等效阻尼比**（保持 $\omega_n$ 不变）：
 $$\zeta_t=\zeta+\frac12 K_t\omega_n$$
 
+---
+
 ## 八、终值定理 & 稳态误差
+
 ### 终值定理
-$$\lim_{t\to\infty}e(t)=\lim_{s\to 0} sE(s)$$
-
-### 稳态误差（单位负反馈）
-$$e_{ss}=\lim_{s\to 0} s\cdot \frac{R(s)}{1+G(s)}$$
-
-
-### 稳态误差对照表
-| 系统型别 | 阶跃输入 $r(t)=1$ | 斜坡输入 $r(t)=t$ | 抛物线输入 $r(t)=\frac12 t^2$ |
-|:--------:|:-----------------:|:-----------------:|:---------------------------:|
-| 0型      | $\dfrac{1}{1+K_p}$ | $\infty$          | $\infty$                    |
-| I型      | $0$               | $\dfrac{1}{K_v}$  | $\infty$                    |
-| II型     | $0$               | $0$               | $\dfrac{1}{K_a}$            |
-
-## 九、二阶系统频域与时域关系
-谐振峰值 $(\zeta<0.707)$：
-$$M_r=\frac{1}{2\zeta\sqrt{1-\zeta^2}}$$
-谐振频率：
-$$\omega_r=\omega_n\sqrt{1-2\zeta^2}$$
-带宽频率：
-$$\omega_b=\omega_n\sqrt{1-2\zeta^2+\sqrt{2-4\zeta^2+4\zeta^4}}$$
-相角裕度近似：
-$$\gamma\approx\arctan\frac{2\zeta}{\sqrt{\sqrt{1+4\zeta^4}-2\zeta^2}}$$
-
-### 高阶系统经验公式
-超调量 $(1<M_r<1.8)$：
-$$\sigma\%=0.16+0.4(M_r-1)$$
-调节时间：
-$$t_s\approx\frac{K\pi}{\omega_c},\quad K=2+1.5(M_r-1)+2.5(M_r-1)^2$$
-
-## 十、超前校正
-传递函数 $(\alpha>1)$：
-$$G_c(s)=\frac{1+\alpha Ts}{1+Ts}$$
-最大超前角频率：
-$$\omega_m=\frac{1}{T\sqrt{\alpha}}$$
-最大超前相角：
-$$\varphi_m=\arcsin\frac{\alpha-1}{\alpha+1}$$
-
-## 十一、滞后校正
-传递函数 $(b<1)$：
-$$G_c(s)=\frac{1+bTs}{1+Ts}$$
-最大滞后角频率：
-$$\omega_m=\frac{1}{T\sqrt{b}}$$
-
-## 十二、离散系统（Z变换）
-### 零阶保持器+被控对象
-$$G(z)=(1-z^{-1})\cdot \mathcal{Z}\left[\frac{G_0(s)}{s}\right]$$
-
-### Z域终值定理
-$$\lim_{k\to\infty}e(k)=\lim_{z\to 1}(z-1)E(z)$$
-
-### 离散稳定判据
-闭环特征方程所有根落在 $z$ 平面**单位圆内部**，系统稳定。">
+> 注意条件：$sE(s)$ 的极点必须全部位于 $s$ 平面的左半平面（原点除外）。">
 <meta property="og:title" content="自动控制原理">
 <meta property="og:description" content="# 自动控制原理 公式总结
 
 ## 一、典型环节的传递函数
-1. 比例环节 $G(s)=K$
+
+1. 比例环节：
 $$G(s)=K$$
-2. 惯性环节 $G(s)=\frac{1}{Ts+1}$
+
+2. 惯性环节：
 $$G(s)=\frac{1}{Ts+1}$$
-3. 积分环节 $G(s)=\frac{1}{Ts}$
+
+3. 积分环节：
 $$G(s)=\frac{1}{Ts}$$
-4. 微分环节 $G(s)=Ts$
+
+4. 微分环节：
 $$G(s)=Ts$$
-5. 振荡环节 $G(s)=\frac{\omega_n^2}{T^2s^2+2\zeta Ts+1}=\frac{\omega_n^2}{s^2+2\zeta\omega_n s+\omega_n^2}$
-$$G(s)=\frac{\omega_n^2}{T^2s^2+2\zeta Ts+1}=\frac{\omega_n^2}{s^2+2\zeta\omega_n s+\omega_n^2}$$
-6. 滞后环节 $G(s)=e^{-\tau s}$
+
+5. 振荡环节：
+$$G(s)=\frac{\omega_n^2}{T^2s^2+2\zeta Ts+1}$$
+$$\quad G(s)=\frac{\omega_n^2}{s^2+2\zeta\omega_n s+\omega_n^2}$$
+
+6. 滞后环节：
 $$G(s)=e^{-\tau s}$$
 
+---
+
 ## 二、结构图·单位负反馈闭环
-闭环传递函数：$\Phi(s)=\frac{G(s)}{1+G(s)}$
+
+* **闭环传递函数**：
 $$\Phi(s)=\frac{G(s)}{1+G(s)}$$
-由闭环反推开环：$G(s)=\frac{\Phi(s)}{1-\Phi(s)}$
+
+* **由闭环反推开环**：
 $$G(s)=\frac{\Phi(s)}{1-\Phi(s)}$$
 
+---
+
 ## 三、输入信号的拉普拉斯变换
-1. 单位阶跃 $r(t)=\varepsilon(t)$，$R(s)=\frac{1}{s}$
+
+1. 单位阶跃 $r(t)=\varepsilon(t)$：
 $$R(s)=\frac{1}{s}$$
-2. 单位斜坡 $r(t)=t$，$R(s)=\frac{1}{s^2}$
+
+2. 单位斜坡 $r(t)=t$：
 $$R(s)=\frac{1}{s^2}$$
-3. 单位抛物线 $r(t)=\frac12 t^2$，$R(s)=\frac{1}{s^3}$
+
+3. 单位抛物线 $r(t)=\frac12 t^2$：
 $$R(s)=\frac{1}{s^3}$$
 
-## 四、一阶系统的动态性能指标
-$$t_d \approx 0.69T,\quad t_r \approx 2.20T,\quad t_s \approx 3T$$
+---
 
-### 一阶系统的输出响应
-1. 单位脉冲：
+## 四、一阶系统的动态性能指标
+
+* **时域响应时间近似值**：
+$$t_d \approx 0.69T$$
+$$t_r \approx 2.20T$$
+$$t_s \approx 3T \quad (5\% \text{ 误差带})$$
+$$t_s \approx 4T \quad (2\% \text{ 误差带})$$
+
+### 一阶系统的输出响应 $c(t)$
+
+1. 单位脉冲输入：
 $$c(t)=\frac{1}{T}e^{-\frac{t}{T}}$$
-2. 单位阶跃：
+
+2. 单位阶跃输入：
 $$c(t)=1-e^{-\frac{t}{T}}$$
-3. 单位斜坡：
+
+3. 单位斜坡输入：
 $$c(t)=t-T+Te^{-\frac{t}{T}}$$
-4. 单位加速度：
+
+4. 单位加速度输入：
 $$c(t)=\frac12 t^2-Tt+T^2\left(1-e^{-\frac{t}{T}}\right)$$
 
-## 五、二阶系统
-传递函数：
-$$\Phi(s)=\frac{\omega_n^2}{s^2+2\zeta\omega_n s+\omega_n^2}$$
-特征根：
-$$s_{1,2}=-\zeta\omega_n \pm j\omega_n\sqrt{1-\zeta^2}$$
-阻尼振荡频率：$\omega_d=\omega_n\sqrt{1-\zeta^2}$，$\beta=\arccos\zeta$
+---
 
-### 单位阶跃响应
-1. 欠阻尼 $(0<\zeta<1)$：
+## 五、二阶系统时域分析
+
+* **标准闭环传递函数**：
+$$\Phi(s)=\frac{\omega_n^2}{s^2+2\zeta\omega_n s+\omega_n^2}$$
+
+* **特征根（极点位置）**：
+$$s_{1,2}=-\zeta\omega_n \pm j\omega_n\sqrt{1-\zeta^2}$$
+
+* **相关频率与角度**：
+$$\omega_d=\omega_n\sqrt{1-\zeta^2}$$
+$$\beta=\arccos\zeta$$
+
+### 单位阶跃响应 $c(t)$
+
+1. 欠阻尼状态 $(0<\zeta<1)$：
 $$c(t)=1-\frac{e^{-\zeta\omega_n t}}{\sqrt{1-\zeta^2}}\sin(\omega_d t+\beta)$$
-2. 临界阻尼 $(\zeta=1)$：
+
+2. 临界阻尼状态 $(\zeta=1)$：
 $$c(t)=1-e^{-\omega_n t}(1+\omega_n t)$$
 
 ### 欠阻尼二阶动态性能指标
-1. 上升时间：
-$$t_r=\frac{\pi-\beta}{\omega_d}=\frac{\pi-\arccos\zeta}{\omega_n\sqrt{1-\zeta^2}}$$
-2. 峰值时间：
-$$t_p=\frac{\pi}{\omega_d}=\frac{\pi}{\omega_n\sqrt{1-\zeta^2}}$$
-3. 超调量：
-$$\sigma\%=e^{-\frac{\zeta\pi}{\sqrt{1-\zeta^2}}}\times 100\%$$
-4. 调节时间（5%误差带）：
-$$t_s\approx\frac{3.5}{\zeta\omega_n}$$
 
-## 六、比例-微分控制
-开环传递函数：
+1. 上升时间 $t_r$：
+$$t_r=\frac{\pi-\beta}{\omega_d}$$
+$$\quad t_r=\frac{\pi-\arccos\zeta}{\omega_n\sqrt{1-\zeta^2}}$$
+
+2. 峰值时间 $t_p$：
+$$t_p=\frac{\pi}{\omega_d}$$
+$$\quad t_p=\frac{\pi}{\omega_n\sqrt{1-\zeta^2}}$$
+
+3. 超调量 $\sigma\%$：
+$$\sigma\%=e^{-\frac{\zeta\pi}{\sqrt{1-\zeta^2}}}\times 100\%$$
+
+4. 调节时间 $t_s$：
+    * $5\%$ 误差带：
+    $$t_s\approx\frac{3.5}{\zeta\omega_n}$$
+    * $2\%$ 误差带：
+    $$t_s\approx\frac{4}{\zeta\omega_n}$$
+
+---
+
+## 六、比例-微分 (PD) 控制
+
+* **等效开环传递函数**：
 $$G(s)=\frac{K(T_d s+1)}{s\left(\frac{s^2}{\omega_n^2}+\frac{2\zeta s}{\omega_n}+1\right)}$$
-等效阻尼比：
+
+* **系统等效阻尼比**：
 $$\zeta_d=\zeta+\frac12 T_d\omega_n$$
 
-### PD性能指标
+### PD 性能指标变化
+
 1. 峰值时间：
 $$t_p=\frac{\pi}{\omega_n\sqrt{1-\zeta_d^2}}$$
+
 2. 超调量：
 $$\sigma\%=\frac{\sqrt{1-\zeta_d^2}}{\zeta_d}e^{-\frac{\zeta_d\pi}{\sqrt{1-\zeta_d^2}}}$$
+
 3. 调节时间：
 $$t_s\approx\frac{3+\ln r}{\zeta_d\omega_n}$$
 
+---
+
 ## 七、测速反馈控制
-闭环传递函数：
+
+* **闭环传递函数**：
 $$\Phi(s)=\frac{\omega_n^2}{s^2+2\zeta_t\omega_n s+\omega_n^2}$$
-等效阻尼：
+
+* **系统等效阻尼比**（保持 $\omega_n$ 不变）：
 $$\zeta_t=\zeta+\frac12 K_t\omega_n$$
 
+---
+
 ## 八、终值定理 & 稳态误差
+
 ### 终值定理
-$$\lim_{t\to\infty}e(t)=\lim_{s\to 0} sE(s)$$
-
-### 稳态误差（单位负反馈）
-$$e_{ss}=\lim_{s\to 0} s\cdot \frac{R(s)}{1+G(s)}$$
-
-
-### 稳态误差对照表
-| 系统型别 | 阶跃输入 $r(t)=1$ | 斜坡输入 $r(t)=t$ | 抛物线输入 $r(t)=\frac12 t^2$ |
-|:--------:|:-----------------:|:-----------------:|:---------------------------:|
-| 0型      | $\dfrac{1}{1+K_p}$ | $\infty$          | $\infty$                    |
-| I型      | $0$               | $\dfrac{1}{K_v}$  | $\infty$                    |
-| II型     | $0$               | $0$               | $\dfrac{1}{K_a}$            |
-
-## 九、二阶系统频域与时域关系
-谐振峰值 $(\zeta<0.707)$：
-$$M_r=\frac{1}{2\zeta\sqrt{1-\zeta^2}}$$
-谐振频率：
-$$\omega_r=\omega_n\sqrt{1-2\zeta^2}$$
-带宽频率：
-$$\omega_b=\omega_n\sqrt{1-2\zeta^2+\sqrt{2-4\zeta^2+4\zeta^4}}$$
-相角裕度近似：
-$$\gamma\approx\arctan\frac{2\zeta}{\sqrt{\sqrt{1+4\zeta^4}-2\zeta^2}}$$
-
-### 高阶系统经验公式
-超调量 $(1<M_r<1.8)$：
-$$\sigma\%=0.16+0.4(M_r-1)$$
-调节时间：
-$$t_s\approx\frac{K\pi}{\omega_c},\quad K=2+1.5(M_r-1)+2.5(M_r-1)^2$$
-
-## 十、超前校正
-传递函数 $(\alpha>1)$：
-$$G_c(s)=\frac{1+\alpha Ts}{1+Ts}$$
-最大超前角频率：
-$$\omega_m=\frac{1}{T\sqrt{\alpha}}$$
-最大超前相角：
-$$\varphi_m=\arcsin\frac{\alpha-1}{\alpha+1}$$
-
-## 十一、滞后校正
-传递函数 $(b<1)$：
-$$G_c(s)=\frac{1+bTs}{1+Ts}$$
-最大滞后角频率：
-$$\omega_m=\frac{1}{T\sqrt{b}}$$
-
-## 十二、离散系统（Z变换）
-### 零阶保持器+被控对象
-$$G(z)=(1-z^{-1})\cdot \mathcal{Z}\left[\frac{G_0(s)}{s}\right]$$
-
-### Z域终值定理
-$$\lim_{k\to\infty}e(k)=\lim_{z\to 1}(z-1)E(z)$$
-
-### 离散稳定判据
-闭环特征方程所有根落在 $z$ 平面**单位圆内部**，系统稳定。">
+> 注意条件：$sE(s)$ 的极点必须全部位于 $s$ 平面的左半平面（原点除外）。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://Blinder32.github.io/gemzhang.github.io/post/zi-dong-kong-zhi-yuan-li.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/194662847?v=4&size=64">
@@ -354,113 +370,195 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <div class="markdown-body" id="postBody"><h1>自动控制原理 公式总结</h1>
 <h2>一、典型环节的传递函数</h2>
 <ol>
-<li>比例环节 $G(s)=K$<br>
-$$G(s)=K$$
+<li>
+<p>比例环节：<br>
+$$G(s)=K$$</p>
 </li>
-<li>惯性环节 $G(s)=\frac{1}{Ts+1}$<br>
-$$G(s)=\frac{1}{Ts+1}$$
+<li>
+<p>惯性环节：<br>
+$$G(s)=\frac{1}{Ts+1}$$</p>
 </li>
-<li>积分环节 $G(s)=\frac{1}{Ts}$<br>
-$$G(s)=\frac{1}{Ts}$$
+<li>
+<p>积分环节：<br>
+$$G(s)=\frac{1}{Ts}$$</p>
 </li>
-<li>微分环节 $G(s)=Ts$<br>
-$$G(s)=Ts$$
+<li>
+<p>微分环节：<br>
+$$G(s)=Ts$$</p>
 </li>
-<li>振荡环节 $G(s)=\frac{\omega_n^2}{T^2s^2+2\zeta Ts+1}=\frac{\omega_n^2}{s^2+2\zeta\omega_n s+\omega_n^2}$<br>
-$$G(s)=\frac{\omega_n^2}{T^2s^2+2\zeta Ts+1}=\frac{\omega_n^2}{s^2+2\zeta\omega_n s+\omega_n^2}$$
+<li>
+<p>振荡环节：<br>
+$$G(s)=\frac{\omega_n^2}{T^2s^2+2\zeta Ts+1}$$<br>
+$$\quad G(s)=\frac{\omega_n^2}{s^2+2\zeta\omega_n s+\omega_n^2}$$</p>
 </li>
-<li>滞后环节 $G(s)=e^{-\tau s}$<br>
-$$G(s)=e^{-\tau s}$$
+<li>
+<p>滞后环节：<br>
+$$G(s)=e^{-\tau s}$$</p>
 </li>
 </ol>
+<hr>
 <h2>二、结构图·单位负反馈闭环</h2>
-<p>闭环传递函数：$\Phi(s)=\frac{G(s)}{1+G(s)}$<br>
-$$\Phi(s)=\frac{G(s)}{1+G(s)}$$<br>
-由闭环反推开环：$G(s)=\frac{\Phi(s)}{1-\Phi(s)}$<br>
+<ul>
+<li>
+<p><strong>闭环传递函数</strong>：<br>
+$$\Phi(s)=\frac{G(s)}{1+G(s)}$$</p>
+</li>
+<li>
+<p><strong>由闭环反推开环</strong>：<br>
 $$G(s)=\frac{\Phi(s)}{1-\Phi(s)}$$</p>
+</li>
+</ul>
+<hr>
 <h2>三、输入信号的拉普拉斯变换</h2>
 <ol>
-<li>单位阶跃 $r(t)=\varepsilon(t)$，$R(s)=\frac{1}{s}$<br>
-$$R(s)=\frac{1}{s}$$
+<li>
+<p>单位阶跃 $r(t)=\varepsilon(t)$：<br>
+$$R(s)=\frac{1}{s}$$</p>
 </li>
-<li>单位斜坡 $r(t)=t$，$R(s)=\frac{1}{s^2}$<br>
-$$R(s)=\frac{1}{s^2}$$
+<li>
+<p>单位斜坡 $r(t)=t$：<br>
+$$R(s)=\frac{1}{s^2}$$</p>
 </li>
-<li>单位抛物线 $r(t)=\frac12 t^2$，$R(s)=\frac{1}{s^3}$<br>
-$$R(s)=\frac{1}{s^3}$$
+<li>
+<p>单位抛物线 $r(t)=\frac12 t^2$：<br>
+$$R(s)=\frac{1}{s^3}$$</p>
 </li>
 </ol>
+<hr>
 <h2>四、一阶系统的动态性能指标</h2>
-<p>$$t_d \approx 0.69T,\quad t_r \approx 2.20T,\quad t_s \approx 3T$$</p>
-<h3>一阶系统的输出响应</h3>
+<ul>
+<li>
+<strong>时域响应时间近似值</strong>：<br>
+$$t_d \approx 0.69T$$<br>
+$$t_r \approx 2.20T$$<br>
+$$t_s \approx 3T \quad (5% \text{ 误差带})$$<br>
+$$t_s \approx 4T \quad (2% \text{ 误差带})$$
+</li>
+</ul>
+<h3>一阶系统的输出响应 $c(t)$
+</h3>
 <ol>
-<li>单位脉冲：<br>
-$$c(t)=\frac{1}{T}e^{-\frac{t}{T}}$$
+<li>
+<p>单位脉冲输入：<br>
+$$c(t)=\frac{1}{T}e^{-\frac{t}{T}}$$</p>
 </li>
-<li>单位阶跃：<br>
-$$c(t)=1-e^{-\frac{t}{T}}$$
+<li>
+<p>单位阶跃输入：<br>
+$$c(t)=1-e^{-\frac{t}{T}}$$</p>
 </li>
-<li>单位斜坡：<br>
-$$c(t)=t-T+Te^{-\frac{t}{T}}$$
+<li>
+<p>单位斜坡输入：<br>
+$$c(t)=t-T+Te^{-\frac{t}{T}}$$</p>
 </li>
-<li>单位加速度：<br>
-$$c(t)=\frac12 t^2-Tt+T^2\left(1-e^{-\frac{t}{T}}\right)$$
+<li>
+<p>单位加速度输入：<br>
+$$c(t)=\frac12 t^2-Tt+T^2\left(1-e^{-\frac{t}{T}}\right)$$</p>
 </li>
 </ol>
-<h2>五、二阶系统</h2>
-<p>传递函数：<br>
-$$\Phi(s)=\frac{\omega_n^2}{s^2+2\zeta\omega_n s+\omega_n^2}$$<br>
-特征根：<br>
-$$s_{1,2}=-\zeta\omega_n \pm j\omega_n\sqrt{1-\zeta^2}$$<br>
-阻尼振荡频率：$\omega_d=\omega_n\sqrt{1-\zeta^2}$，$\beta=\arccos\zeta$</p>
-<h3>单位阶跃响应</h3>
-<ol>
-<li>欠阻尼 $(0&amp;lt;\zeta&amp;lt;1)$：<br>
-$$c(t)=1-\frac{e^{-\zeta\omega_n t}}{\sqrt{1-\zeta^2}}\sin(\omega_d t+\beta)$$
+<hr>
+<h2>五、二阶系统时域分析</h2>
+<ul>
+<li>
+<p><strong>标准闭环传递函数</strong>：<br>
+$$\Phi(s)=\frac{\omega_n^2}{s^2+2\zeta\omega_n s+\omega_n^2}$$</p>
 </li>
-<li>临界阻尼 $(\zeta=1)$：<br>
-$$c(t)=1-e^{-\omega_n t}(1+\omega_n t)$$
+<li>
+<p><strong>特征根（极点位置）</strong>：<br>
+$$s_{1,2}=-\zeta\omega_n \pm j\omega_n\sqrt{1-\zeta^2}$$</p>
+</li>
+<li>
+<p><strong>相关频率与角度</strong>：<br>
+$$\omega_d=\omega_n\sqrt{1-\zeta^2}$$<br>
+$$\beta=\arccos\zeta$$</p>
+</li>
+</ul>
+<h3>单位阶跃响应 $c(t)$
+</h3>
+<ol>
+<li>
+<p>欠阻尼状态 $(0&amp;lt;\zeta&amp;lt;1)$：<br>
+$$c(t)=1-\frac{e^{-\zeta\omega_n t}}{\sqrt{1-\zeta^2}}\sin(\omega_d t+\beta)$$</p>
+</li>
+<li>
+<p>临界阻尼状态 $(\zeta=1)$：<br>
+$$c(t)=1-e^{-\omega_n t}(1+\omega_n t)$$</p>
 </li>
 </ol>
 <h3>欠阻尼二阶动态性能指标</h3>
 <ol>
-<li>上升时间：<br>
-$$t_r=\frac{\pi-\beta}{\omega_d}=\frac{\pi-\arccos\zeta}{\omega_n\sqrt{1-\zeta^2}}$$
+<li>
+<p>上升时间 $t_r$：<br>
+$$t_r=\frac{\pi-\beta}{\omega_d}$$<br>
+$$\quad t_r=\frac{\pi-\arccos\zeta}{\omega_n\sqrt{1-\zeta^2}}$$</p>
 </li>
-<li>峰值时间：<br>
-$$t_p=\frac{\pi}{\omega_d}=\frac{\pi}{\omega_n\sqrt{1-\zeta^2}}$$
+<li>
+<p>峰值时间 $t_p$：<br>
+$$t_p=\frac{\pi}{\omega_d}$$<br>
+$$\quad t_p=\frac{\pi}{\omega_n\sqrt{1-\zeta^2}}$$</p>
 </li>
-<li>超调量：<br>
-$$\sigma%=e^{-\frac{\zeta\pi}{\sqrt{1-\zeta^2}}}\times 100%$$
+<li>
+<p>超调量 $\sigma%$：<br>
+$$\sigma%=e^{-\frac{\zeta\pi}{\sqrt{1-\zeta^2}}}\times 100%$$</p>
 </li>
-<li>调节时间（5%误差带）：<br>
+<li>
+<p>调节时间 $t_s$：</p>
+<ul>
+<li>
+$5%$ 误差带：<br>
 $$t_s\approx\frac{3.5}{\zeta\omega_n}$$
 </li>
+<li>
+$2%$ 误差带：<br>
+$$t_s\approx\frac{4}{\zeta\omega_n}$$
+</li>
+</ul>
+</li>
 </ol>
-<h2>六、比例-微分控制</h2>
-<p>开环传递函数：<br>
-$$G(s)=\frac{K(T_d s+1)}{s\left(\frac{s^2}{\omega_n^2}+\frac{2\zeta s}{\omega_n}+1\right)}$$<br>
-等效阻尼比：<br>
+<hr>
+<h2>六、比例-微分 (PD) 控制</h2>
+<ul>
+<li>
+<p><strong>等效开环传递函数</strong>：<br>
+$$G(s)=\frac{K(T_d s+1)}{s\left(\frac{s^2}{\omega_n^2}+\frac{2\zeta s}{\omega_n}+1\right)}$$</p>
+</li>
+<li>
+<p><strong>系统等效阻尼比</strong>：<br>
 $$\zeta_d=\zeta+\frac12 T_d\omega_n$$</p>
-<h3>PD性能指标</h3>
+</li>
+</ul>
+<h3>PD 性能指标变化</h3>
 <ol>
-<li>峰值时间：<br>
-$$t_p=\frac{\pi}{\omega_n\sqrt{1-\zeta_d^2}}$$
+<li>
+<p>峰值时间：<br>
+$$t_p=\frac{\pi}{\omega_n\sqrt{1-\zeta_d^2}}$$</p>
 </li>
-<li>超调量：<br>
-$$\sigma%=\frac{\sqrt{1-\zeta_d^2}}{\zeta_d}e^{-\frac{\zeta_d\pi}{\sqrt{1-\zeta_d^2}}}$$
+<li>
+<p>超调量：<br>
+$$\sigma%=\frac{\sqrt{1-\zeta_d^2}}{\zeta_d}e^{-\frac{\zeta_d\pi}{\sqrt{1-\zeta_d^2}}}$$</p>
 </li>
-<li>调节时间：<br>
-$$t_s\approx\frac{3+\ln r}{\zeta_d\omega_n}$$
+<li>
+<p>调节时间：<br>
+$$t_s\approx\frac{3+\ln r}{\zeta_d\omega_n}$$</p>
 </li>
 </ol>
+<hr>
 <h2>七、测速反馈控制</h2>
-<p>闭环传递函数：<br>
-$$\Phi(s)=\frac{\omega_n^2}{s^2+2\zeta_t\omega_n s+\omega_n^2}$$<br>
-等效阻尼：<br>
+<ul>
+<li>
+<p><strong>闭环传递函数</strong>：<br>
+$$\Phi(s)=\frac{\omega_n^2}{s^2+2\zeta_t\omega_n s+\omega_n^2}$$</p>
+</li>
+<li>
+<p><strong>系统等效阻尼比</strong>（保持 $\omega_n$ 不变）：<br>
 $$\zeta_t=\zeta+\frac12 K_t\omega_n$$</p>
+</li>
+</ul>
+<hr>
 <h2>八、终值定理 &amp; 稳态误差</h2>
 <h3>终值定理</h3>
+<blockquote>
+<p>注意条件：$sE(s)$ 的极点必须全部位于 $s$ 平面的左半平面（原点除外）。</p>
+</blockquote>
 <p>$$\lim_{t\to\infty}e(t)=\lim_{s\to 0} sE(s)$$</p>
 <h3>稳态误差（单位负反馈）</h3>
 <p>$$e_{ss}=\lim_{s\to 0} s\cdot \frac{R(s)}{1+G(s)}$$</p>
@@ -469,68 +567,121 @@ $$\zeta_t=\zeta+\frac12 K_t\omega_n$$</p>
 <thead>
 <tr>
 <th align="center">系统型别</th>
-<th align="center">阶跃输入 $r(t)=1$
+<th align="center">阶跃输入 $R(s)=\frac{1}{s}$
 </th>
-<th align="center">斜坡输入 $r(t)=t$
+<th align="center">斜坡输入 $R(s)=\frac{1}{s^2}$
 </th>
-<th align="center">抛物线输入 $r(t)=\frac12 t^2$
+<th align="center">抛物线输入 $R(s)=\frac{1}{s^3}$
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">0型</td>
+<td align="center"><strong>0 型系统</strong></td>
 <td align="center">$\dfrac{1}{1+K_p}$</td>
 <td align="center">$\infty$</td>
 <td align="center">$\infty$</td>
 </tr>
 <tr>
-<td align="center">I型</td>
+<td align="center"><strong>I 型系统</strong></td>
 <td align="center">$0$</td>
 <td align="center">$\dfrac{1}{K_v}$</td>
 <td align="center">$\infty$</td>
 </tr>
 <tr>
-<td align="center">II型</td>
+<td align="center"><strong>II 型系统</strong></td>
 <td align="center">$0$</td>
 <td align="center">$0$</td>
 <td align="center">$\dfrac{1}{K_a}$</td>
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
+<ul>
+<li>
+<strong>静态误差系数定义</strong>：
+<ul>
+<li>位置误差系数：$K_p = \lim_{s\to 0} G(s)$</li>
+<li>速度误差系数：$K_v = \lim_{s\to 0} sG(s)$</li>
+<li>加速度误差系数：$K_a = \lim_{s\to 0} s^2G(s)$</li>
+</ul>
+</li>
+</ul>
+<hr>
 <h2>九、二阶系统频域与时域关系</h2>
-<p>谐振峰值 $(\zeta&amp;lt;0.707)$：<br>
-$$M_r=\frac{1}{2\zeta\sqrt{1-\zeta^2}}$$<br>
-谐振频率：<br>
-$$\omega_r=\omega_n\sqrt{1-2\zeta^2}$$<br>
-带宽频率：<br>
-$$\omega_b=\omega_n\sqrt{1-2\zeta^2+\sqrt{2-4\zeta^2+4\zeta^4}}$$<br>
-相角裕度近似：<br>
-$$\gamma\approx\arctan\frac{2\zeta}{\sqrt{\sqrt{1+4\zeta^4}-2\zeta^2}}$$</p>
+<ol>
+<li>
+<p>谐振峰值 $M_r$（仅在 $\zeta &amp;lt; 0.707$ 时存在）：<br>
+$$M_r=\frac{1}{2\zeta\sqrt{1-\zeta^2}}$$</p>
+</li>
+<li>
+<p>谐振频率 $\omega_r$：<br>
+$$\omega_r=\omega_n\sqrt{1-2\zeta^2}$$</p>
+</li>
+<li>
+<p>带宽频率 $\omega_b$：<br>
+$$\omega_b=\omega_n\sqrt{1-2\zeta^2+\sqrt{2-4\zeta^2+4\zeta^4}}$$</p>
+</li>
+<li>
+<p>相角裕度 $\gamma$ 与阻尼比的精确关系：<br>
+$$\gamma\approx\arctan\frac{2\zeta}{\sqrt{\sqrt{1+4\zeta^4}-2\zeta^2}} \approx 100\zeta$$</p>
+</li>
+</ol>
 <h3>高阶系统经验公式</h3>
-<p>超调量 $(1&amp;lt;M_r&amp;lt;1.8)$：<br>
-$$\sigma%=0.16+0.4(M_r-1)$$<br>
-调节时间：<br>
-$$t_s\approx\frac{K\pi}{\omega_c},\quad K=2+1.5(M_r-1)+2.5(M_r-1)^2$$</p>
+<ul>
+<li>
+<p><strong>超调量估计</strong>（条件：$1 &lt; M_r &lt; 1.8$）：<br>
+$$\sigma%=0.16+0.4(M_r-1)$$</p>
+</li>
+<li>
+<p><strong>调节时间估计</strong>：<br>
+$$t_s\approx\frac{K\pi}{\omega_c}$$<br>
+$$K=2+1.5(M_r-1)+2.5(M_r-1)^2$$</p>
+</li>
+</ul>
+<hr>
 <h2>十、超前校正</h2>
-<p>传递函数 $(\alpha&amp;gt;1)$：<br>
-$$G_c(s)=\frac{1+\alpha Ts}{1+Ts}$$<br>
-最大超前角频率：<br>
-$$\omega_m=\frac{1}{T\sqrt{\alpha}}$$<br>
-最大超前相角：<br>
+<ul>
+<li>
+<p><strong>传递函数</strong>（满足系数 $\alpha &amp;gt; 1$）：<br>
+$$G_c(s)=\frac{1+\alpha Ts}{1+Ts}$$</p>
+</li>
+<li>
+<p><strong>最大超前角频率</strong>：<br>
+$$\omega_m=\frac{1}{T\sqrt{\alpha}}$$</p>
+</li>
+<li>
+<p><strong>最大超前相角</strong>：<br>
 $$\varphi_m=\arcsin\frac{\alpha-1}{\alpha+1}$$</p>
+</li>
+</ul>
+<hr>
 <h2>十一、滞后校正</h2>
-<p>传递函数 $(b&amp;lt;1)$：<br>
-$$G_c(s)=\frac{1+bTs}{1+Ts}$$<br>
-最大滞后角频率：<br>
+<ul>
+<li>
+<p><strong>传递函数</strong>（满足系数 $b &amp;lt; 1$）：<br>
+$$G_c(s)=\frac{1+bTs}{1+Ts}$$</p>
+</li>
+<li>
+<p><strong>最大滞后角频率</strong>：<br>
 $$\omega_m=\frac{1}{T\sqrt{b}}$$</p>
+</li>
+</ul>
+<hr>
 <h2>十二、离散系统（Z变换）</h2>
-<h3>零阶保持器+被控对象</h3>
+<h3>1. 零阶保持器 + 被控对象脉冲传递函数</h3>
 <p>$$G(z)=(1-z^{-1})\cdot \mathcal{Z}\left[\frac{G_0(s)}{s}\right]$$</p>
-<h3>Z域终值定理</h3>
+<h3>2. Z域终值定理</h3>
+<blockquote>
+<p>注意条件：$(z-1)E(z)$ 的极点必须全部严格位于单位圆内。</p>
+</blockquote>
 <p>$$\lim_{k\to\infty}e(k)=\lim_{z\to 1}(z-1)E(z)$$</p>
-<h3>离散稳定判据</h3>
-<p>闭环特征方程所有根落在 $z$ 平面<strong>单位圆内部</strong>，系统稳定。</p></div>
+<h3>3. 离散稳定性判据</h3>
+<ul>
+<li>
+<strong>根的分布约束</strong>：闭环特征方程的所有特征根都必须满足 $|z| &amp;lt; 1$。</li>
+<li>
+<strong>几何物理意义</strong>：整个系统的闭环极点必须完全落在 $z$ 平面的<strong>单位圆内部</strong>。</li>
+</ul></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
