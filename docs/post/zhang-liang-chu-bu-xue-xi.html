@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/194662847?v=4&size=64"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="
+###  [张量](https://zhida.zhihu.com/search?content_id=279202037&content_type=Article&match_order=1&q=%E5%BC%A0%E9%87%8F&zhida_source=entity)初步
+
+前面几节我们一直在用矢量语言——梯度、散度、旋度，[矢量点乘](https://zhida.zhihu.com/search?content_id=279202037&content_type=Article&match_order=1&q=%E7%9F%A2%E9%87%8F%E7%82%B9%E4%B9%98&zhida_source=entity)和叉乘。">
+<meta property="og:title" content="张量初步学习">
+<meta property="og:description" content="
+###  [张量](https://zhida.zhihu.com/search?content_id=279202037&content_type=Article&match_order=1&q=%E5%BC%A0%E9%87%8F&zhida_source=entity)初步
+
+前面几节我们一直在用矢量语言——梯度、散度、旋度，[矢量点乘](https://zhida.zhihu.com/search?content_id=279202037&content_type=Article&match_order=1&q=%E7%9F%A2%E9%87%8F%E7%82%B9%E4%B9%98&zhida_source=entity)和叉乘。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://Blinder32.github.io/gemzhang.github.io/post/zhang-liang-chu-bu-xue-xi.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/194662847?v=4&size=64">
+<title>张量初步学习</title>
+
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">张量初步学习</h1>
+<div class="title-right">
+    <a href="https://Blinder32.github.io/gemzhang.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/Blinder32/gemzhang.github.io/issues/4" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h3><a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=1&amp;q=%E5%BC%A0%E9%87%8F&amp;zhida_source=entity" rel="nofollow">张量</a>初步</h3>
+<p>前面几节我们一直在用矢量语言——梯度、散度、旋度，<a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=1&amp;q=%E7%9F%A2%E9%87%8F%E7%82%B9%E4%B9%98&amp;zhida_source=entity" rel="nofollow">矢量点乘</a>和叉乘。这套语言处理<a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=1&amp;q=%E9%BA%A6%E5%85%8B%E6%96%AF%E9%9F%A6%E6%96%B9%E7%A8%8B%E7%BB%84&amp;zhida_source=entity" rel="nofollow">麦克斯韦方程组</a>的前三个方程非常高效：$\nabla\cdot\mathbf{E}$、$\nabla\times\mathbf{B}$ 这些表达式用<a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=1&amp;q=%E7%9F%A2%E9%87%8F%E7%AE%97%E7%AC%A6&amp;zhida_source=entity" rel="nofollow">矢量算符</a>写出来简洁又直观。</p>
+<p>但到第四个方程——电磁场的<a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=1&amp;q=%E5%8A%A8%E9%87%8F%E5%AE%88%E6%81%92&amp;zhida_source=entity" rel="nofollow">动量守恒</a>——矢量语言就不够用了。动量是一个<a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=5&amp;q=%E7%9F%A2%E9%87%8F&amp;zhida_source=entity" rel="nofollow">矢量</a>，<a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=1&amp;q=%E5%8A%A8%E9%87%8F%E6%B5%81&amp;zhida_source=entity" rel="nofollow">动量流</a>（单位时间流过单位面积的动量）是一个既有方向（动量方向）又有流向（通过哪个面）的量——它是一个<a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=1&amp;q=%E5%B9%B6%E7%9F%A2&amp;zhida_source=entity" rel="nofollow">并矢</a>，或者叫<a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=1&amp;q=%E4%BA%8C%E9%98%B6%E5%BC%A0%E9%87%8F&amp;zhida_source=entity" rel="nofollow">二阶张量</a>。你不能用一个简单的矢量点乘或叉乘来表示它。<a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=1&amp;q=%E9%BA%A6%E5%85%8B%E6%96%AF%E9%9F%A6%E5%BA%94%E5%8A%9B%E5%BC%A0%E9%87%8F&amp;zhida_source=entity" rel="nofollow">麦克斯韦应力张量</a> $\overset{\leftrightarrow}{\mathbf{T}}$ 就是这样一个东西：$T_{ij}$ 表示“$j$ 方向的动量沿 $i$ 方向流动的<a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=1&amp;q=%E6%B5%81%E5%AF%86%E5%BA%A6&amp;zhida_source=entity" rel="nofollow">流密度</a>”。</p>
+<p>这一节的任务是引入张量的基本语言——克罗内克 $\delta$ 符号和<a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=1&amp;q=%E5%88%97%E7%BB%B4-%E5%A5%87%E7%BB%B4%E5%A1%94&amp;zhida_source=entity" rel="nofollow">列维-奇维塔</a> $\epsilon$ 符号——并展示如何用它们高效地处理矢量恒等式。我们的目标不是全面学习<a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=1&amp;q=%E5%BC%A0%E9%87%8F%E5%88%86%E6%9E%90&amp;zhida_source=entity" rel="nofollow">张量分析</a>，而是掌握足够多的代数工具，能够在<a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=1&amp;q=%E7%94%B5%E7%A3%81%E5%AD%A6&amp;zhida_source=entity" rel="nofollow">电磁学</a>中自信地处理应力张量、能量-<a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=1&amp;q=%E5%8A%A8%E9%87%8F%E5%BC%A0%E9%87%8F&amp;zhida_source=entity" rel="nofollow">动量张量</a>，以及电磁波的<a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=1&amp;q=%E8%83%BD%E9%87%8F%E5%AF%86%E5%BA%A6&amp;zhida_source=entity" rel="nofollow">能量密度</a>和能流密度。</p>
+<p><strong>一、为什么要引入张量指标记号</strong></p>
+<p>用矢量记号写出来的公式很紧凑，但在需要分量操作时——比如证明一个含叉乘的<a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=2&amp;q=%E6%81%92%E7%AD%89%E5%BC%8F&amp;zhida_source=entity" rel="nofollow">恒等式</a>，或者计算两个矢量的<a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=1&amp;q=%E5%B9%B6%E7%A7%AF&amp;zhida_source=entity" rel="nofollow">并积</a>——矢量记号就显得不够用了。我们想要一种既能显式写出分量、又能紧凑地求和的记号。</p>
+<p>**<a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=1&amp;q=%E7%88%B1%E5%9B%A0%E6%96%AF%E5%9D%A6%E6%B1%82%E5%92%8C%E7%BA%A6%E5%AE%9A&amp;zhida_source=entity" rel="nofollow">爱因斯坦求和约定</a>**解决了这个矛盾。它的规则很简单：任何乘积中如果同一个指标字母出现恰好两次（一次上标一次下标，或者在<a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=1&amp;q=%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%A9%BA%E9%97%B4&amp;zhida_source=entity" rel="nofollow">欧几里得空间</a>中，两次都是下标也可以），就默认对该指标从 $1$ 到 $3$ 求和。</p>
+<p>比如，矢量 $\mathbf{A}$ 和 $\mathbf{B}$ 的点乘可以写为：</p>
+<p>$$\mathbf{A}\cdot\mathbf{B} = \sum_{i=1}^{3} A_i B_i \quad \rightarrow \quad A_i B_i$$</p>
+<p>第二个写法里，指标 $i$ 出现了两次，按照求和约定，自动对所有 $i$ 求和。$\sum$ 符号被省略了，但意思没变。这看起来只是省了点笔墨，但到后面处理多个矢量和复杂恒等式时，这种紧凑性会带来实质性的简化。</p>
+<p>矢量 $\mathbf{A}$ 的散度在指标记号下写为 $\partial_i A_i$（$\partial_i \equiv \partial/\partial x_i$）。旋度的第 $i$ 个分量呢？它需要一种能表达“交错”结构的符号。</p>
+<p><strong>二、克罗内克 $\delta$ 符号</strong></p>
+<p><strong>克罗内克 $\delta$ 符号</strong> $\delta_{ij}$ 定义为：</p>
+<p>$$\boxed{\delta_{ij} = \begin{cases} 1, &amp; i = j \ 0, &amp; i \neq j \end{cases}}$$</p>
+<p>它的三个指标全是下标（在欧几里得空间中，上下标没有区别）。$\delta_{ij}$ 就是 $3\times3$ <a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=1&amp;q=%E5%8D%95%E4%BD%8D%E7%9F%A9%E9%98%B5&amp;zhida_source=entity" rel="nofollow">单位矩阵</a>的 $(i,j)$ 分量。</p>
+<p>$\delta_{ij}$ 在求和中的核心作用是“换指标”。比如：</p>
+<p>$$\delta_{ij} A_j = A_i$$</p>
+<p>因为当 $j$ 被求和时，只有 $j=i$ 那一项活下来。这看起来是平凡的操作，但在复杂的恒等式化简中，$\delta$ 符号能帮我们消去多余的求和，把表达式大幅度简化。</p>
+<p>两个 $\delta$ 符号的乘积也有直观的几何意义。考虑 $\delta_{ij}\delta_{ji}$（对 $i,j$ 求和）。首先对 $j$ 求和：$\delta_{ij}\delta_{ji} = \delta_{ii}$。然后对 $i$ 求和：$\delta_{ii} = \delta_{11} + \delta_{22} + \delta_{33} = 3$。一般地，$\delta_{ii} = 3$ ——这是在<a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=1&amp;q=%E4%B8%89%E7%BB%B4%E7%A9%BA%E9%97%B4&amp;zhida_source=entity" rel="nofollow">三维空间</a>中单位<a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=1&amp;q=%E7%9F%A9%E9%98%B5%E7%9A%84%E8%BF%B9&amp;zhida_source=entity" rel="nofollow">矩阵的迹</a>。</p>
+<p><strong>三、列维-奇维塔 $\epsilon$ 符号</strong></p>
+<p><strong>列维-奇维塔 $\epsilon$ 符号</strong> $\epsilon_{ijk}$ 又称为完全反<a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=1&amp;q=%E5%AF%B9%E7%A7%B0%E5%BC%A0%E9%87%8F&amp;zhida_source=entity" rel="nofollow">对称张量</a>，由以下规则定义：</p>
+<ul>
+<li>$\epsilon_{123} = 1$</li>
+<li>交换任意两个指标，符号变号：$\epsilon_{ijk} = -\epsilon_{jik} = -\epsilon_{ikj}$</li>
+<li>如果有两个指标相同，则 $\epsilon_{ijk} = 0$（因为交换相同指标时，$\epsilon$ 必须同时等于它自己和它的相反数）</li>
+</ul>
+<p>因此，三个指标的所有 $3^3 = 27$ 种组合中，只有 $6$ 种非零：$\epsilon_{123} = \epsilon_{231} = \epsilon_{312} = 1$，$\epsilon_{132} = \epsilon_{213} = \epsilon_{321} = -1$，其余 $21$ 种全为零。</p>
+<p>$\epsilon_{ijk}$ 是表达“反对称结构”的完美工具。<a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=1&amp;q=%E7%9F%A2%E9%87%8F%E5%8F%89%E4%B9%98&amp;zhida_source=entity" rel="nofollow">矢量叉乘</a>可以用它写出来：$\mathbf{C} = \mathbf{A}\times\mathbf{B}$ 的第 $i$ 个分量为：</p>
+<p>$$C_i = \epsilon_{ijk} A_j B_k$$</p>
+<p>验证一下：$C_1 = \epsilon_{1jk} A_j B_k = \epsilon_{123}A_2 B_3 + \epsilon_{132}A_3 B_2 = A_2 B_3 - A_3 B_2$，确实是叉乘的 $x$ 分量。</p>
+<p>旋度也同样可以用 $\epsilon$ 符号写出：$\nabla\times\mathbf{A}$ 的第 $i$ 个分量为 $\epsilon_{ijk} \partial_j A_k$（$\partial_j \equiv \partial/\partial x_j$）。</p>
+<p><strong>四、核心恒等式：$\epsilon_{ijk}\epsilon_{imn}$ 的缩并</strong></p>
+<p>这是整个<a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=1&amp;q=%E5%BC%A0%E9%87%8F%E4%BB%A3%E6%95%B0&amp;zhida_source=entity" rel="nofollow">张量代数</a>中最重要的一个恒等式。它把两个 $\epsilon$ 符号的乘积（对公共指标求和）转化为 $\delta$ 符号的组合：</p>
+<p>$$\boxed{\epsilon_{ijk} \epsilon_{imn} = \delta_{jm}\delta_{kn} - \delta_{jn}\delta_{km}}$$</p>
+<p>这里指标 $i$ 是公共的求和指标，$j,k$ 和 $m,n$ 分别来自两个 $\epsilon$ 符号。</p>
+<p><strong>证明思路</strong>：左边对 $i$ 求和后，结果是一个关于 $j,k,m,n$ 四指标的对象。由于 $\epsilon$ 的完全反对称性，这个对象也必须是关于 $(j,k)$ 反对称和关于 $(m,n)$ 反对称的。在所有可能的四指标构型中，满足这些反对称条件的唯一形式（在三维空间中）就是右边给出的两个 $\delta$ 乘积之差。系数可以通过代入特例（如 $j=m=2, k=n=3$）来定出。</p>
+<p>这个恒等式可以从两个对称性的角度来记忆。关于 $(j,k)$：交换 $j$ 和 $k$，左边的 $\epsilon_{ijk} \to \epsilon_{ikj} = -\epsilon_{ijk}$（变号），右边 $\delta_{jm}\delta_{kn} - \delta_{jn}\delta_{km} \to \delta_{km}\delta_{jn} - \delta_{kn}\delta_{jm} = -(\delta_{jm}\delta_{kn} - \delta_{jn}\delta_{km})$（也变号）。关于 $(m,n)$ 同理。两个 $\delta$ 乘积的差值形式是唯一满足这两个反对称条件的组合。</p>
+<p>进一步缩并会得到更简单的形式。令 $k=n$ 并对 $k$ 求和：</p>
+<p>$$\epsilon_{ijk} \epsilon_{imk} = \delta_{jm}\delta_{kk} - \delta_{jk}\delta_{km}$$</p>
+<p>$\delta_{kk}=3$，$\delta_{jk}\delta_{km} = \delta_{jm}$（对 $k$ 求和时，$\delta_{jk}$ 把 $k$ 换成 $j$）。所以：</p>
+<p>$$\boxed{\epsilon_{ijk} \epsilon_{imk} = 3\delta_{jm} - \delta_{jm} = 2\delta_{jm}}$$</p>
+<p>再缩并一次：令 $j=m$ 并对 $j$ 求和，$\epsilon_{ijk} \epsilon_{ijk} = 2\delta_{jj} = 6$。这个结果是预期之中的：三个非零指标的全排列有 $3! = 6$ 种，每种贡献 $1$，共 $6$。</p>
+<p><strong>五、用张量语言重写矢量恒等式</strong></p>
+<p>有了 $\epsilon_{ijk}\epsilon_{imn}$ 恒等式，以前需要逐分量验证的矢量恒等式现在可以用代数简化一步到位。</p>
+<p><strong>5.1 <a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=1&amp;q=%E7%9F%A2%E9%87%8F%E4%B8%89%E9%87%8D%E7%A7%AF&amp;zhida_source=entity" rel="nofollow">矢量三重积</a>：$\mathbf{A}\times(\mathbf{B}\times\mathbf{C})$</strong></p>
+<p>用指标记号写出来：$[\mathbf{A}\times(\mathbf{B}\times\mathbf{C})]<em>i = \epsilon</em>{ijk} A_j (\mathbf{B}\times\mathbf{C})<em>k = \epsilon</em>{ijk} A_j (\epsilon_{kmn} B_m C_n)$。这里 $\epsilon_{kmn}$ 中的 $k$ 是公共指标。把 $\epsilon_{ijk}$ 和 $\epsilon_{kmn}$ 的指标重新排列，利用 $\epsilon$ 的<a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=1&amp;q=%E5%BE%AA%E7%8E%AF%E5%AF%B9%E7%A7%B0%E6%80%A7&amp;zhida_source=entity" rel="nofollow">循环对称性</a> $\epsilon_{ijk} = \epsilon_{kij}$，我们得到 $\epsilon_{kij}\epsilon_{kmn}$。应用恒等式（把 $k$ 作为公共求和指标，相当于原公式中的 $i$）：</p>
+<p>$$\epsilon_{kij} \epsilon_{kmn} = \delta_{im}\delta_{jn} - \delta_{in}\delta_{jm}$$</p>
+<p>代回去：</p>
+<p>$$\begin{aligned} [\mathbf{A}\times(\mathbf{B}\times\mathbf{C})]_i &amp;amp;= (\delta_{im}\delta_{jn} - \delta_{in}\delta_{jm}) A_j B_m C_n \ &amp;amp;= B_i (A_j C_j) - C_i (A_j B_j) \ &amp;amp;= B_i (\mathbf{A}\cdot\mathbf{C}) - C_i (\mathbf{A}\cdot\mathbf{B}) \end{aligned}$$</p>
+<p>这就一步完成了证明：$\mathbf{A}\times(\mathbf{B}\times\mathbf{C}) = \mathbf{B}(\mathbf{A}\cdot\mathbf{C}) - \mathbf{C}(\mathbf{A}\cdot\mathbf{B})$。用传统方法需要展开四个分量再合并，用张量方法三行搞定。</p>
+<p><strong>5.2 旋度之旋度：$\nabla\times(\nabla\times\mathbf{F})$</strong></p>
+<p>$[\nabla\times(\nabla\times\mathbf{F})]<em>i = \epsilon</em>{ijk} \partial_j (\epsilon_{kmn} \partial_m F_n) = \epsilon_{kij}\epsilon_{kmn} \partial_j \partial_m F_n$。同样用恒等式，$\epsilon_{kij}\epsilon_{kmn} = \delta_{im}\delta_{jn} - \delta_{in}\delta_{jm}$。代回：</p>
+<p>$$\begin{aligned} [\nabla\times(\nabla\times\mathbf{F})]_i &amp;amp;= (\delta_{im}\delta_{jn} - \delta_{in}\delta_{jm}) \partial_j \partial_m F_n \ &amp;amp;= \partial_i (\partial_j F_j) - \partial_j \partial_j F_i \ &amp;amp;= [\nabla(\nabla\cdot\mathbf{F}) - \nabla^2\mathbf{F}]_i \end{aligned}$$</p>
+<p>所以 $\nabla\times(\nabla\times\mathbf{F}) = \nabla(\nabla\cdot\mathbf{F}) - \nabla^2\mathbf{F}$。这是电磁波推导中最关键的矢量恒等式，用 $\epsilon$ 符号证明它比逐分量展开简洁得多。</p>
+<p><strong>5.3 两个叉乘的点乘</strong></p>
+<p>在<a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=1&amp;q=%E5%9D%A1%E5%8D%B0%E5%BB%B7%E5%AE%9A%E7%90%86&amp;zhida_source=entity" rel="nofollow">坡印廷定理</a>的推导中会出现 $(\nabla\times\mathbf{E})\cdot\mathbf{B} - \mathbf{E}\cdot(\nabla\times\mathbf{B})$ 这一形式。用指标记号重写：$\epsilon_{ijk} (\partial_j E_k) B_i - E_i \epsilon_{ijk} \partial_j B_k = \epsilon_{ijk} B_i \partial_j E_k - \epsilon_{ijk} E_i \partial_j B_k$。交换第一项中 $\epsilon$ 的指标 $\epsilon_{ijk} = -\epsilon_{jik}$，它可以写为 $-\partial_j(\epsilon_{jik} E_k B_i) + \epsilon_{jik} E_k \partial_j B_i$。最终这一组合等于 $-\nabla\cdot(\mathbf{E}\times\mathbf{B})$，这正是坡印廷<a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=1&amp;q=%E7%9F%A2%E9%87%8F%E6%95%A3%E5%BA%A6&amp;zhida_source=entity" rel="nofollow">矢量散度</a>的负值。</p>
+<p><strong>六、并矢与二阶张量</strong></p>
+<p>两个矢量 $\mathbf{A}$ 和 $\mathbf{B}$ 的<strong>并积</strong>（或<a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=1&amp;q=%E5%BC%A0%E9%87%8F%E7%A7%AF&amp;zhida_source=entity" rel="nofollow">张量积</a>）记作 $\mathbf{A}\mathbf{B}$，它是一个二阶张量，分量就是 $A_i B_j$。注意这里没有点乘也没有叉乘——就是简单地把两个矢量的分量拼成矩阵。$A_i B_j$ 和 $B_j A_i$ 是不同的分量（一个是矩阵的 $(i,j)$ 元，一个是 $(j,i)$ 元）。</p>
+<p><a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=1&amp;q=%E5%8D%95%E4%BD%8D%E5%BC%A0%E9%87%8F&amp;zhida_source=entity" rel="nofollow">单位张量</a>（二阶）就是 $\delta_{ij}$。任意二阶张量 $\overset{\leftrightarrow}{\mathbf{T}}$ 可以分解为对称部分和反对称部分：$T_{ij} = \frac{1}{2}(T_{ij} + T_{ji}) + \frac{1}{2}(T_{ij} - T_{ji})$。</p>
+<p>两个矢量的点乘有两种推广方式。矢量 $\mathbf{A}$ 点乘张量 $\overset{\leftrightarrow}{\mathbf{T}}$，得到一个矢量：$(\mathbf{A}\cdot\overset{\leftrightarrow}{\mathbf{T}})<em>j = A_i T</em>{ij}$（对第一个指标求和）。反过来，$(\overset{\leftrightarrow}{\mathbf{T}}\cdot\mathbf{A})<em>i = T</em>{ij} A_j$（对第二个指标求和）。这两个结果一般不同，除非 $\overset{\leftrightarrow}{\mathbf{T}}$ 是对称的。</p>
+<p>张量的散度也是类似的：$(\nabla\cdot\overset{\leftrightarrow}{\mathbf{T}})<em>j = \partial_i T</em>{ij}$。这是一个矢量——对张量的第一个指标取散度，得到的是每个 $j$ 分量上的散度值。</p>
+<p><strong>七、麦克斯韦应力张量的指标形式</strong></p>
+<p>现在我们用张量语言来写电磁场的动量守恒。麦克斯韦应力张量是：</p>
+<p>$$T_{ij} = \epsilon_0\left( E_i E_j - \frac{1}{2}\delta_{ij} E^2 \right) + \frac{1}{\mu_0}\left( B_i B_j - \frac{1}{2}\delta_{ij} B^2 \right)$$</p>
+<p><a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=1&amp;q=%E5%8A%A8%E9%87%8F%E5%AE%88%E6%81%92%E5%AE%9A%E5%BE%8B&amp;zhida_source=entity" rel="nofollow">动量守恒定律</a>的微分形式为：</p>
+<p>$$\frac{\partial}{\partial t}(\mathbf{g})_i + \partial_j T_{ij} = -(\rho\mathbf{E} + \mathbf{J}\times\mathbf{B})_i$$</p>
+<p>左边第一项是动量密度的时间变化率（$\mathbf{g} = \mu_0\epsilon_0 \mathbf{S} = \epsilon_0 \mathbf{E}\times\mathbf{B}$），第二项是动量流密度张量的散度（单位体积内通过表面流入的净动量），右边是<a href="https://zhida.zhihu.com/search?content_id=279202037&amp;content_type=Article&amp;match_order=1&amp;q=%E6%B4%9B%E4%BC%A6%E5%85%B9%E5%8A%9B%E5%AF%86%E5%BA%A6&amp;zhida_source=entity" rel="nofollow">洛伦兹力密度</a>的负值（电磁场对物质施加的力，等于场自身动量的减少）。</p>
+<p>这个方程的指标形式非常紧凑。推导它需要用到 $\partial_j T_{ij}$ 的展开——把 $T_{ij}$ 代入，计算 $\partial_j T_{ij}$，利用麦克斯韦方程组把散度和旋度项重新组合。整个推导约需半页纸的指标运算，但用纯矢量记号来做则相当冗长。张量指标在这里展现出不可替代的优势。</p>
+<p>张量记号引入了一套新的代数语言。它的核心无非是两条：$\delta_{ij}$ 用来“换指标”和表达各向同性的单位结构，$\epsilon_{ijk}$ 用来表达反对称性和叉乘。把这两个符号结合起来，加上 $\epsilon_{ijk}\epsilon_{imn}$ 缩并恒等式，矢量分析中几乎所有恒等式——从三重积到旋度之旋度——都可以用这套代数机械地推出来。在后续章节中，当我们处理电磁场的能量-动量张量和麦克斯韦应力张量时，这套语言将使我们能够从麦克斯韦方程组直接走到守恒定律，而不会在矢量恒等式的丛林里迷失方向。</p>
+<blockquote>
+<p>本文由 <a href="https://zhuanlan.zhihu.com/p/1901622331102696374" rel="nofollow">Zhihu on Obsidian</a> 创作并发布</p>
+</blockquote></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://Blinder32.github.io/gemzhang.github.io">真理尽头</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if(""!=""){
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行 "+diffDay+" 天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.disabled=true;
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","Blinder32/gemzhang.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+
+
+</script>
+<script>MathJax = {tex: {inlineMath: [["$", "$"]]}};</script><script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</html>
