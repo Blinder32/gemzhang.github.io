@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/194662847?v=4&size=64"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="
+以[中科院811](https://zhida.zhihu.com/search?content_id=198324701&content_type=Article&match_order=1&q=%E4%B8%AD%E7%A7%91%E9%99%A2811&zhida_source=entity)和陈鄂生黄皮为复习资料，总结的量子力学考试里需要**记忆**的公式，要么是必须记住的，要么是“反正这么常见写了不知道多少次你顺手背了呗”的常见结论。">
+<meta property="og:title" content="量子力学公式">
+<meta property="og:description" content="
+以[中科院811](https://zhida.zhihu.com/search?content_id=198324701&content_type=Article&match_order=1&q=%E4%B8%AD%E7%A7%91%E9%99%A2811&zhida_source=entity)和陈鄂生黄皮为复习资料，总结的量子力学考试里需要**记忆**的公式，要么是必须记住的，要么是“反正这么常见写了不知道多少次你顺手背了呗”的常见结论。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://Blinder32.github.io/gemzhang.github.io/post/liang-zi-li-xue-gong-shi.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/194662847?v=4&size=64">
+<title>量子力学公式</title>
+
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">量子力学公式</h1>
+<div class="title-right">
+    <a href="https://Blinder32.github.io/gemzhang.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/Blinder32/gemzhang.github.io/issues/9" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><p>以<a href="https://zhida.zhihu.com/search?content_id=198324701&amp;content_type=Article&amp;match_order=1&amp;q=%E4%B8%AD%E7%A7%91%E9%99%A2811&amp;zhida_source=entity" rel="nofollow">中科院811</a>和陈鄂生黄皮为复习资料，总结的量子力学考试里需要<strong>记忆</strong>的公式，要么是必须记住的，要么是“反正这么常见写了不知道多少次你顺手背了呗”的常见结论。</p>
+<h2>1.<a href="https://zhida.zhihu.com/search?content_id=198324701&amp;content_type=Article&amp;match_order=1&amp;q=%E7%A7%AF%E5%88%86&amp;zhida_source=entity" rel="nofollow">积分</a></h2>
+<p>$\int_{0}^{\infty} x^{n} e^{-a x} d x=\frac{n !}{a^{n+1}}$</p>
+<p>$\int_{-\infty}^{+\infty} e^{-x^{2}} d x=\sqrt{\pi}$</p>
+<p>$\int_{-\infty}^{+\infty} e^{i m x} d x=2 \pi \delta(m)$</p>
+<p>$\delta(\alpha x)=\frac{1}{|\alpha|} \delta(x)$</p>
+<p>$\int_{0}^{\infty} x^{2 n} e^{-a x^{2}} d x=\frac{(2 n-1) ! !}{2^{n+1} a^{n}} \sqrt{\frac{\pi}{a}}$</p>
+<p>$\int_{0}^{\pi} \sin (m x) \sin (n x) d x=\frac{\pi}{2} \delta_{mn}$</p>
+<h2>2.<a href="https://zhida.zhihu.com/search?content_id=198324701&amp;content_type=Article&amp;match_order=1&amp;q=%E7%AE%97%E7%AC%A6&amp;zhida_source=entity" rel="nofollow">算符</a></h2>
+<p>${\left[\hat{x}<em>{i}, \hat{P}</em>{j}\right]=i \hbar \delta_{ i j}}$</p>
+<p>${\left[\hat{L}<em>{\alpha}, \hat{L}</em>{\beta}\right]=\varepsilon_{\alpha \beta \gamma }i \hbar \hat{L}<em>{\gamma} \quad\left[\hat{L}^{2}, \hat{L}</em>{\alpha}\right]=0}$</p>
+<p>$\left[\hat{L}<em>{\alpha}, \hat{P}</em>{\beta}\right]=\varepsilon_{\alpha \beta \gamma }i \hbar \hat{P}_{\gamma}$</p>
+<p>$\left[\hat{L}<em>{\alpha}, \hat{x}</em>{\beta}\right]=\varepsilon_{\alpha \beta \gamma }i \hbar \hat{x}_{\gamma}$</p>
+<p>$[\hat{P}, f(x)]=-i\hbar \frac{\partial f(x)}{\partial x}$</p>
+<p>对定态有 $[\hat{x}, \hat{H}]=\frac{i \hbar}{\mu} \hat{P}$</p>
+<p>$e^{\hat{A} } \hat{B}e^{-\hat{A}}=\hat{B}+[\hat{A}, \hat{B}]+\frac{1}{2 !}[\hat{A},[\hat{A}, \hat{B}]]+\frac{1}{3 !}[\hat{A},[\hat{A}, [\hat{A}, \hat{B}]]]+\dots$</p>
+<p><a href="https://zhida.zhihu.com/search?content_id=198324701&amp;content_type=Article&amp;match_order=1&amp;q=%E7%A9%BA%E9%97%B4%E5%B9%B3%E7%A7%BB&amp;zhida_source=entity" rel="nofollow">空间平移</a>： $e^{-i \hat{P}\left(x-x_{0}\right) / \hbar}\left|x_{0}\right\rangle=\left|x\right\rangle$</p>
+<p>时间平移： $e^{-i \hat{H}\left(t-t_{0}\right) / \hbar}\left|t_{0}\right\rangle=\left|t\right\rangle$</p>
+<p><a href="https://zhida.zhihu.com/search?content_id=198324701&amp;content_type=Article&amp;match_order=1&amp;q=%E7%A9%BA%E9%97%B4%E6%97%8B%E8%BD%AC&amp;zhida_source=entity" rel="nofollow">空间旋转</a>： $e^{-i \hat{L} \cdot \vec{n} \cdot\left(\varphi-\varphi_{0}\right) / \hbar}\left|\varphi_{0}\right\rangle=\left|\varphi\right\rangle$</p>
+<p>几率流密度： $j \equiv \frac{i \hbar}{2 \mu}\left(\psi \nabla \psi^{<em>}-\psi^{</em>} \nabla \psi\right)$</p>
+<h2>3.<a href="https://zhida.zhihu.com/search?content_id=198324701&amp;content_type=Article&amp;match_order=1&amp;q=%E4%B8%80%E7%BB%B4&amp;zhida_source=entity" rel="nofollow">一维</a>定态</h2>
+<p><strong><a href="https://zhida.zhihu.com/search?content_id=198324701&amp;content_type=Article&amp;match_order=1&amp;q=%E4%B8%80%E7%BB%B4%E6%97%A0%E9%99%90%E6%96%B9%E5%8A%BF%E9%98%B1&amp;zhida_source=entity" rel="nofollow">一维无限方势阱</a></strong></p>
+<p>$E_{n}=\frac{n^{2} \pi^{2} \hbar^{2}}{2 \mu  a^{2}} ,\psi_{n}=\left{\begin{array}{ll} \sqrt{\frac{2}{a}} \sin \frac{n \pi x}{a} &amp; 0&lt;x&lt;a \ 0 &amp; x&lt;0, x&gt;a \end{array}\right.$</p>
+<p>势垒 $V=V_{0} \quad(x&amp;gt;0)$</p>
+<p>当入射能量 $E&amp;gt;V_0$ 时：</p>
+<p>反射率 $R=\frac{(k-\alpha)^{2}}{(k+\alpha)^{2}}$ ，透射率 $T=1-R=\frac{4 k \alpha}{(k+\alpha)^{2}}$</p>
+<p>$k=\sqrt{\frac{2 \mu E}{\hbar^{2}}} \quad \alpha=\sqrt{\frac{2\mu\left(E-V_{0}\right)}{\hbar^{2}}}$</p>
+<p>当入射能量 $E&amp;lt;V_0$ 时：</p>
+<p>$R=1 \quad T=0$</p>
+<p>$\delta$ 势<a href="https://zhida.zhihu.com/search?content_id=198324701&amp;content_type=Article&amp;match_order=1&amp;q=%E8%BE%B9%E7%95%8C%E6%9D%A1%E4%BB%B6&amp;zhida_source=entity" rel="nofollow">边界条件</a> $V(x)=A \delta(a)$ ： $\psi^{\prime}\left(a^{+}\right)-\psi^{\prime}\left(a^{-}\right)=\frac{2 \mu A}{\hbar^{2}} \psi(a)$</p>
+<p>平面转子：</p>
+<p>$\hat{H}=\frac{\hat{L}_{z}^{2}}{2 I}=-\frac{\hbar^{2}}{2 I} \frac{d^{2}}{d \varphi^{2}}$</p>
+<p>$\psi_{m}(\varphi)=\frac{1}{\sqrt{2 \pi}} e^{\operatorname{im\varphi } }$ ，$m \in Z$</p>
+<p><strong><a href="https://zhida.zhihu.com/search?content_id=198324701&amp;content_type=Article&amp;match_order=1&amp;q=%E4%B8%80%E7%BB%B4%E8%B0%90%E6%8C%AF%E5%AD%90&amp;zhida_source=entity" rel="nofollow">一维谐振子</a></strong></p>
+<p>$\begin{array}{l} V(x)=\frac{1}{2} \mu w^{2} x^{2} \quad E_{n}=\left(n+\frac{1}{2}\right) \hbar w \ \psi_{n}(x)=N_{n} e^{-\alpha^{2} x^{2} / 2} H_{n}(\alpha x) \ \alpha=\sqrt{\frac{\mu w}{\hbar}} \quad N_{n}=\sqrt{\frac{\alpha}{\sqrt{\pi} \cdot 2^{n} \cdot n !}} \ \begin{aligned} a &amp; \equiv \sqrt{\frac{\mu w}{2 \hbar}}\left(\hat{x}+\frac{i}{\mu w} \hat{p}\right) \ a^{+} &amp; \equiv \sqrt{\frac{\mu  w}{2 \hbar}}\left(\hat{x}-\frac{i}{\mu w} \hat{p}\right) \ x &amp;=\sqrt{\frac{\hbar}{2 m w}}\left(a^{\dagger}+a\right) \ \hat{p} &amp;=i \sqrt{\frac{\mu w \hbar}{2}}\left(a^{\dagger}-a\right) \ x|n\rangle &amp;=\frac{1}{\sqrt{2} \alpha}\left(a^{\dagger}|n\rangle+a|n\rangle\right) \ &amp;=\frac{1}{\sqrt{2} \alpha}(\sqrt{n+1}|n+1\rangle+\sqrt{n}|n-1\rangle) \ \frac{d}{d x}|n\rangle &amp;=\frac{d}{\sqrt{2}}\left(a|n\rangle-a^{\dagger}|n\rangle\right) \ &amp;=\frac{\alpha}{\sqrt{2}}(\sqrt{n}|n-1\rangle-\sqrt{n+1}|n+1\rangle) \end{aligned} \end{array}$</p>
+<p>最后两个代数解法给出的公式<strong>极为重要</strong>，谐振子出题能手算的大部分都是从这个角度出</p>
+<h2>4.<a href="https://zhida.zhihu.com/search?content_id=198324701&amp;content_type=Article&amp;match_order=1&amp;q=%E8%A7%92%E5%8A%A8%E9%87%8F&amp;zhida_source=entity" rel="nofollow">角动量</a></h2>
+<p><strong>升降算符</strong>： $\hat{L}<em>{\pm} \equiv \hat{L}</em>{x} \pm i \hat L_{y} \quad \hat{J}<em>{\pm}\equiv \hat{J}</em>{x} \pm i \hat J_{y}$</p>
+<p>$\begin{array} \hat {J}<em>{\pm}|j m\rangle=\sqrt{j(j+1)-m(m \pm 1)} \hbar|j, m \pm 1\rangle \ \hat{J}^{2}|j m\rangle=j(j+1) \hbar^{2}|j m\rangle \ \hat{J}</em>{z}|j m\rangle=m \hbar|j m\rangle \end{array}$</p>
+<p>$\begin{array}{l} \hat{L}<em>{x}=\frac{\hbar}{2}\left(\begin{array}{lll} 0 &amp; 1 &amp; 0 \ 1 &amp; 0 &amp; 1 \ 0 &amp; 1 &amp; 0 \end{array}\right) \quad \hat{L</em>{y}}=\frac{\hbar}{\sqrt{2}}\left(\begin{array}{ccc} 0 &amp; -i &amp; 0 \ i &amp; 0 &amp; -i \ 0 &amp; i &amp; 0 \end{array}\right) \quad \hat{L}_{z}=\hbar\left(\begin{array}{ccc} 1 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; -1 \end{array}\right) \ \end{array}$</p>
+<p>$l_x=\hbar,0,-\hbar$ 对应的<a href="https://zhida.zhihu.com/search?content_id=198324701&amp;content_type=Article&amp;match_order=1&amp;q=%E6%9C%AC%E5%BE%81%E7%9F%A2&amp;zhida_source=entity" rel="nofollow">本征矢</a>为：</p>
+<p>$\begin{array}{ll}\frac{1}{2}\left(\begin{array}{c} 1 \ \sqrt{2} \ 1 \end{array}\right) \quad \frac{1}{\sqrt{2}}\left(\begin{array}{c} 1 \ 0 \ -1 \end{array}\right) \quad \frac{1}{2}\left(\begin{array}{c} 1 \ -\sqrt{2} \ 1 \end{array}\right) \ \end{array}$</p>
+<p>$l_y=\hbar,0,-\hbar$ 对应的本征矢为：</p>
+<p>$\frac{1}{2}\left(\begin{array}{c} 1 \ \sqrt{2} i \ -1 \end{array}\right) \quad \frac{1}{\sqrt{2}}\left(\begin{array}{c} 1 \ 0 \ 1 \end{array}\right) \quad \frac{1}{2}\left(\begin{array}{c} 1 \ -\sqrt{2} i \ -1 \end{array}\right)$</p>
+<h2>5.表象</h2>
+<p>$\begin{array}{l} \psi(\vec{r}, t)=\frac{1}{(2 \pi \hbar)^{\frac{3}{2}}} \int_{-\infty}^{+\infty} \varphi(\vec{p}, t) e^{i \vec{p} \cdot \vec{r} / \hbar} d^{3} \vec{p} \ \varphi(\vec{p}, t)=\frac{1}{(2 \pi \hbar)^{\frac{3}{2}}} \int_{-\infty}^{+\infty} \psi(\vec{r}, t) e^{-i \vec{p} \cdot \vec{r} / \hbar} d^{3} \vec{r} \ i \hbar \frac{\partial}{\partial t} \varphi(\vec{p}, t)=\frac{p^{2}}{2 \mu} \varphi(\vec{p}, t)+\int_{-\infty}^{+\infty} V_{p p^{\prime}} \varphi\left(\overrightarrow{p^{\prime}}, t\right) d^{3} \overrightarrow{p^{\prime}}\ V_{p p^{\prime}}=\frac{1}{(2 \pi \hbar)^3}\int_{-\infty}^{+\infty} V(\vec{r}, t) e^{-i (\vec{p}-\vec{p^{\prime}}) \cdot \vec{r} / \hbar} d^{3} \vec{r} \end{array}$</p>
+<p><strong><a href="https://zhida.zhihu.com/search?content_id=198324701&amp;content_type=Article&amp;match_order=1&amp;q=%E7%BB%B4%E9%87%8C%E5%AE%9A%E7%90%86&amp;zhida_source=entity" rel="nofollow">维里定理</a></strong>： $2\langle\hat{T}\rangle_{n}=\langle\vec{r} \cdot \nabla V(\vec{r}^{2})\rangle_{n}$</p>
+<p>势能是 $\vec {r}$ 的<a href="https://zhida.zhihu.com/search?content_id=198324701&amp;content_type=Article&amp;match_order=1&amp;q=%E9%BD%90%E6%AC%A1%E5%87%BD%E6%95%B0&amp;zhida_source=entity" rel="nofollow">齐次函数</a> $\lambda^{s} V(\vec{r})$ 时： $\langle\hat{T}\rangle_{n}=\frac{s}{2}\langle\hat{V}\rangle_{n}$</p>
+<p><strong><a href="https://zhida.zhihu.com/search?content_id=198324701&amp;content_type=Article&amp;match_order=1&amp;q=F-H%E5%AE%9A%E7%90%86&amp;zhida_source=entity" rel="nofollow">F-H定理</a></strong>（对束缚定态， $\lambda$ 是参数）： $\frac{\partial E_{n}}{\partial \lambda}=\overline{\left(\frac{\partial \hat{H}}{\partial \lambda}\right)_{n}}$</p>
+<p>海森堡绘景： $\frac{d \hat{F}<em>{H}(t)}{d t}=\frac{1}{i \hbar}\left[\hat{F}</em>{H}(t), \hat{H}_{H}(t)\right]$</p>
+<p>力学量F平均值的速率： $\frac{d \bar{F}(t)}{d t}=\frac{\partial \bar{F}}{\partial t}+\frac{1}{i \hbar} \overline{[\hat{F}, \hat{H}]}$</p>
+<h2>6.三维定态</h2>
+<p>$\begin{array}{l} \psi(\vec{r})=R(r) Y_{l m}(\theta, \varphi)=\frac{u(r)}{r} Y_{l m}(\theta, \varphi) \ \frac{d^{2} R(r)}{d r^{2}}+\frac{2}{r} \frac{d R(r)}{d r}+\left(\frac{2 \mu}{\hbar^{2}}(E-V(r))-\frac{l(l+1)}{r^{2}}\right) \cdot R(r)=0 \ \frac{d^{2} u(r)}{d r^{2}}+\left(\frac{2 \mu}{\hbar^{2}}(E-V(r))-\frac{l(l+1)}{r^{2}}\right) u(r)=0 \quad U(0)=0 \end{array}$</p>
+<p>类氢离子势： $V(r)=-\frac{Ze^2}{r}$</p>
+<p>$E_{n}=-\frac{ Z^{2} e^{2}}{2 a n^{2}} \quad \psi_{n l m}(r)=R_{n l}(r) Y_{l m}(\theta, \varphi)$</p>
+<p>$R_{nl}(r)=N_{nl}e ^ { - \frac { Z r } { n a } } ( \frac { 2 Z r } { n a } ) ^ { l } F (l+1-n, 2l+2, \frac{2 Z r}{n a})$</p>
+<p>其中 $n,l,m\in Z,n\geq1,0\leq l\leq n-1,-l\leq m \leq l$</p>
+<h2>7.电磁场中的<a href="https://zhida.zhihu.com/search?content_id=198324701&amp;content_type=Article&amp;match_order=1&amp;q=%E5%B8%A6%E7%94%B5%E7%B2%92%E5%AD%90&amp;zhida_source=entity" rel="nofollow">带电粒子</a></h2>
+<p>$\begin{array}{ll} \hat{H}=\frac{1}{2 \mu}\left(\hat{p}-\frac{q}{c} A(\vec{r}, t)\right)^{2}+q \Phi(\vec{r}, t) \ \hat{v}=\frac{1}{\mu}\left(\hat{p}-\frac{q}{c} \vec{A}\right)  \end{array}$</p>
+<p><strong>常见<a href="https://zhida.zhihu.com/search?content_id=198324701&amp;content_type=Article&amp;match_order=1&amp;q=%E7%A3%81%E7%9F%A2%E5%8A%BF&amp;zhida_source=entity" rel="nofollow">磁矢势</a></strong>： $\begin{array}{ll} A=\left(-\frac{B}{2} y, \frac{B}{2} x, 0\right) \ A=(-B y, 0,0) \end{array}$</p>
+<h2>8.自旋与<a href="https://zhida.zhihu.com/search?content_id=198324701&amp;content_type=Article&amp;match_order=1&amp;q=%E8%80%A6%E5%90%88&amp;zhida_source=entity" rel="nofollow">耦合</a></h2>
+<p>$\hat{M}<em>{S}=-\frac{e}{\mu c} \hat{S} \quad \hat{S}^{2}=\hat{S}</em>{x}^{2}+\hat{S}<em>{y}^{2}+\hat{S}</em>{z}^{2}=\frac{3}{4} \hbar^{2}$</p>
+<p>$\hat{S}_z$ 表象下：</p>
+<p>$\begin{array}{l} \hat{S}^{2}=\frac{3}{4} \hbar^{2}\left(\begin{array}{cc} 1 &amp; 0 \ 0 &amp; 1 \end{array}\right) \quad \hat S_{x}=\frac{\hbar}{2}\left(\begin{array}{ll} 0 &amp; 1 \ 1 &amp; 0 \end{array}\right) \ \hat S_{y}=\frac{\hbar}{2}\left(\begin{array}{cc} 0 &amp; -i \ i &amp; 0 \end{array}\right)\quad \hat S_{z}=\frac{\hbar}{2}\left(\begin{array}{cc} 1 &amp; 0 \ 0 &amp; -1 \end{array}\right) \end{array}$</p>
+<p>对应的<a href="https://zhida.zhihu.com/search?content_id=198324701&amp;content_type=Article&amp;match_order=1&amp;q=%E6%9C%AC%E5%BE%81%E5%80%BC&amp;zhida_source=entity" rel="nofollow">本征值</a>和本征矢：</p>
+<p>$\begin{array}{l} S_{z}=\frac{\hbar}{2} \quad \varphi_{+}=\left(\begin{array}{l} 1 \ 0 \end{array}\right) \quad S_{z}=-\frac{\hbar}{2} \quad \varphi_{-}=\left(\begin{array}{l} 0 \ 1 \end{array}\right)\ S_{x}=\frac{\hbar}{2} \quad \varphi_{+}=\frac{1}{\sqrt{2}}\left(\begin{array}{l} 1 \ 1 \end{array}\right) \quad S_{x}=-\frac{\hbar}{2} \quad \varphi_{-}=\frac{1}{\sqrt{2}}\left(\begin{array}{l} 1 \ -1 \end{array}\right)\ S_{y}=\frac{\hbar}{2} \quad \varphi_{+}=\frac{1}{\sqrt{2}}\left(\begin{array}{l} 1 \ i \end{array}\right) \quad S_y=-\frac{\hbar}{2} \quad \varphi_{-}=\frac{1}{\sqrt{2}}\left(\begin{array}{l} 1 \ -i \end{array}\right)\ \hat{S_{n}}=\hat{S} \cdot \vec{n}=\frac{\hbar}{2}\left(\begin{array}{cc} \cos \theta &amp; \sin \theta e^{-i \varphi} \ \sin \theta e^{i \varphi} &amp; -\cos \theta \end{array}\right)\ S_{n}=\frac{\hbar}{2} \quad \varphi_{+}=\left(\begin{array}{l} \cos \frac{\theta}{2} e^{-i \varphi / 2} \ \sin \frac{\theta}{2} e^{i \varphi / 2} \end{array}\right) \S_{n}=-\frac{\hbar}{2} \quad \varphi_{-}=\left(\begin{array}{l} -\sin\frac{\theta}{2} e^{-i \varphi / 2} \ \cos\frac{\theta}{2} e^{i \varphi / 2} \end{array}\right)  \end{array}$</p>
+<p><strong><a href="https://zhida.zhihu.com/search?content_id=198324701&amp;content_type=Article&amp;match_order=1&amp;q=%E6%B3%A1%E5%88%A9%E7%9F%A9%E9%98%B5&amp;zhida_source=entity" rel="nofollow">泡利矩阵</a></strong>：</p>
+<p>$\begin{array}{l} \sigma_x=\left(\begin{array}{cc} 0 &amp; 1 \ 1 &amp; 0 \end{array}\right) \quad \sigma_y=\left(\begin{array}{cc} 0 &amp; -i \ i &amp; 0 \end{array}\right) \quad \sigma_z=\left(\begin{array}{cc} 1 &amp; 0 \ 0 &amp; -1 \end{array}\right) \ \sigma_{i}^{\dagger }=\sigma_{i}\quad \sigma_{i}^{2}=1 \ {\left[\sigma_{i}, \sigma_{j}\right]=2i\varepsilon_{ijk} \sigma_{k} } \ \left{\sigma_{i}, \sigma_{j}\right}=0 \quad \sigma_{i} \sigma_{j}=i \varepsilon_{i j k} \sigma_{k} \end{array}$</p>
+<p><strong><a href="https://zhida.zhihu.com/search?content_id=198324701&amp;content_type=Article&amp;match_order=1&amp;q=%E5%8F%8C%E7%94%B5%E5%AD%90&amp;zhida_source=entity" rel="nofollow">双电子</a>自旋耦合</strong>：</p>
+<p>$\begin{array}{l} \hat{S}<em>{1}\cdot  \hat{S}</em>{2}=\frac{1}{2}\left(\hat{S}^{2}-\frac{3}{2} \hbar^{2}\right) \ \hat{S}<em>{1 z} \cdot \hat{S}</em>{2 z}=\frac{1}{2}\left(\hat{S}_{z}-\frac{\hbar^{2}}{2}\right) \end{array}$</p>
+<p><strong>电子总角动量</strong>：</p>
+<p>$\begin{array}{l} \hat{J}=\hat{L}+\hat{S} \ \hat{J}^{2}=\hat{L}^{2}+\frac{3}{4} \hbar^{2}+2\hat{L} \cdot \hat{S}\ \hat{L} \cdot \hat{S}=\frac{1}{2}\left(\hat{J}^{2}-\hat{L}^{2}-\frac{3}{4} \hbar^{2}\right) \end{array}$</p>
+<p><strong>双1/2粒子耦合</strong>：</p>
+<p>$\begin{array}{l} |11\rangle=\uparrow \uparrow \ |10\rangle=\frac{1}{\sqrt{2}}(\uparrow \downarrow+\downarrow \uparrow) \ |1-1\rangle=\downarrow \downarrow \ |00\rangle=\frac{1}{\sqrt{2}}(\uparrow \downarrow-\downarrow \uparrow) \end{array}$</p>
+<p>注意<a href="https://zhida.zhihu.com/search?content_id=198324701&amp;content_type=Article&amp;match_order=1&amp;q=%E4%B8%89%E9%87%8D%E6%80%81&amp;zhida_source=entity" rel="nofollow">三重态</a>交换对称，单态交换<a href="https://zhida.zhihu.com/search?content_id=198324701&amp;content_type=Article&amp;match_order=1&amp;q=%E5%8F%8D%E5%AF%B9%E7%A7%B0&amp;zhida_source=entity" rel="nofollow">反对称</a></p>
+<h2>9.<a href="https://zhida.zhihu.com/search?content_id=198324701&amp;content_type=Article&amp;match_order=1&amp;q=%E8%BF%91%E4%BC%BC%E6%96%B9%E6%B3%95&amp;zhida_source=entity" rel="nofollow">近似方法</a></h2>
+<p>$\begin{array}{l} E_{n}^{(1)}=H_{m n}^{\prime} \quad E_{n}^{(2)}=\sum_{m \neq n} \frac{\left|H_{m n}^{\prime}\right|^{2}}{E_{n}^{(0)}-E_{m}^{(0)}} \ \psi_{n}^{(1)}=\sum_{m \neq n} \frac{H_{m n}^{\prime}}{E_{n}^{(0)}-E_{m}^{(0)}} \psi_{m}^{(0)} \  \end{array}$</p>
+<p>定态简并微扰公式一样流程不同，记得算**<a href="https://zhida.zhihu.com/search?content_id=198324701&amp;content_type=Article&amp;match_order=1&amp;q=%E9%9B%B6%E7%BA%A7%E6%B3%A2%E5%87%BD%E6%95%B0&amp;zhida_source=entity" rel="nofollow">零级波函数</a>**即可</p>
+<p><a href="https://zhida.zhihu.com/search?content_id=198324701&amp;content_type=Article&amp;match_order=1&amp;q=%E5%8F%98%E5%88%86%E6%B3%95&amp;zhida_source=entity" rel="nofollow">变分法</a>：</p>
+<p>$\begin{array}{l}  E(\alpha)=\langle\psi(r, \alpha)|\hat{H}| \psi(r, \alpha)\rangle \ \frac{\partial E(\alpha)}{\partial \alpha}=0  \end{array}$ 求出后带入 $E(\alpha),\psi(\alpha)$</p>
+<p>跃迁：</p>
+<p>1* $H^{\prime}$ 含时间</p>
+<p>$\begin{array}{l} W_{k \rightarrow m}(t)=\frac{1}{\hbar^{2}}\left|\int_{0}^{t} H_{m k}^{\prime}(t) e^{i \omega_{m k} t} d t\right|^{2} \ \omega_{m k}=\frac{E m-E_{k}}{\hbar} \  \end{array}$</p>
+<p>2* $H^{\prime}$ 不显含时间</p>
+<p>$W_{k \rightarrow m}=\frac{2 \pi}{\hbar}\left|H_{m k}^{\prime}(E)\right|^{2} \rho(E)$</p>
+<p>$W$ 是k态到m态的<a href="https://zhida.zhihu.com/search?content_id=198324701&amp;content_type=Article&amp;match_order=1&amp;q=%E8%B7%83%E8%BF%81%E9%80%9F%E7%8E%87&amp;zhida_source=entity" rel="nofollow">跃迁速率</a>， $\rho(E)$ 是<a href="https://zhida.zhihu.com/search?content_id=198324701&amp;content_type=Article&amp;match_order=1&amp;q=%E8%83%BD%E6%80%81%E5%AF%86%E5%BA%A6&amp;zhida_source=entity" rel="nofollow">能态密度</a></p>
+<p>连续光照<a href="https://zhida.zhihu.com/search?content_id=198324701&amp;content_type=Article&amp;match_order=1&amp;q=%E7%94%B5%E5%81%B6&amp;zhida_source=entity" rel="nofollow">电偶</a>极近似跃迁速率：</p>
+<p>$\begin{array}{l} W_{k\rightarrow m}=\frac{4 \pi^{2} e^{2}}{3 \hbar^{2}} I\left(\left|\omega_{m k}\right|\right)\left|{r_{m k}}\right|^{2} \ \left|{r}<em>{m k}\right|^{2}=\left|x</em>{m k}\right|^{2}+\left|y_{m k}\right|^{2}+|z_{m k}|^{2} \end{array}$</p>
+<p>电偶极跃迁<a href="https://zhida.zhihu.com/search?content_id=198324701&amp;content_type=Article&amp;match_order=1&amp;q=%E9%80%89%E6%8B%A9%E5%AE%9A%E5%88%99&amp;zhida_source=entity" rel="nofollow">选择定则</a>为 $\Delta l =\pm 1  \quad\Delta m=0,\pm 1$</p>
+<p>原子<a href="https://zhida.zhihu.com/search?content_id=198324701&amp;content_type=Article&amp;match_order=1&amp;q=%E8%87%AA%E5%8F%91%E8%B7%83%E8%BF%81&amp;zhida_source=entity" rel="nofollow">自发跃迁</a>速率： $A_{k \rightarrow m}=\frac{4 e^{2} w^{3}<em>{k m}}{3 \hbar c^{3}}\left|{r</em>{m k}}\right|^{2}$</p>
+<h2>10.<a href="https://zhida.zhihu.com/search?content_id=198324701&amp;content_type=Article&amp;match_order=1&amp;q=%E5%85%A8%E5%90%8C%E7%B2%92%E5%AD%90&amp;zhida_source=entity" rel="nofollow">全同粒子</a></h2>
+<p>同一力场中的全同粒子体系：</p>
+<p>fermion</p>
+<p>$\psi_{f}=\frac{1}{\sqrt{N !}}\left|\begin{array}{cccc} \varphi_{1}\left(q_{1}\right) &amp; \varphi_{1}\left(q_{2}\right) &amp; \cdots &amp; \varphi_{1}\left(q_{N}\right) \ \varphi_{2}\left(q_{1}\right) &amp; \varphi_{2}\left(q_{2}\right) &amp; \cdots &amp; \varphi_{2}\left(q_{N}\right) \ \vdots &amp; \vdots &amp; \vdots &amp; \vdots \ \varphi_{N}\left(q_{1}\right) &amp; \varphi_{N}\left(q_{2}\right) &amp; \cdots &amp; \varphi_{N}\left(q_{N}\right) \end{array}\right|$</p>
+<p>boson</p>
+<p>$\psi_{b}=\frac{1}{\sqrt{R}} \sum_{\alpha} \hat{P}<em>{\alpha}\left(\varphi</em>{1}\left(a_{1}\right) \varphi_{2}\left(a_{2}\right) \cdots \varphi_{n}\left(a_{n}\right)\right)$</p>
+<p>这里的 $\hat P$ 是交换算符</p>
+<p>对fermion体系有：</p>
+<p>$\begin{array}{l} \left{a_{i}, a_{j}^\dagger\right}=\delta_{i j} \quad\left{a_{i}, a_{j}\right}=\left{a_{i}^{\dagger}, a_{j}^{\dagger}\right}=0 \ a_{i}\left|n_{i}\right\rangle=\sqrt{n_{i}}\left|n_{i}-1\right\rangle \ a_{i}{ }^{\dagger}\left|n_{i}\right\rangle=\sqrt{1-n_{i}}\left|n_{i}+1\right\rangle \ a_{i}\left|n_{1} n_{2} \cdots n_{i} \cdots\right\rangle=(-1)^{m} \sqrt{n_{i}}\left|n_{1} n_{2} \cdots n_{i}-1 \cdots\right\rangle \ a_{i}^{\dagger}\left|n_{1} n_{2} \cdots n_{i} \cdots\right\rangle=(-1)^{m} \sqrt{1-n_{i}}\left|n_{1} n_{2}\cdots n_{i}+1 \cdots\right\rangle \ m \equiv \sum_{\alpha=1}^{i-1} n_{\alpha} \end{array}$</p>
+<p>对boson体系有：</p>
+<p>$\begin{array}{l} [a_i, a_{j}^\dagger]=\delta_{i j} \quad[a_{i}, a_{j}]=[a_{i}^{\dagger}, a_{j}^{\dagger}]=0 \ a_{i}\left|n_{i}\right\rangle=\sqrt{n_{i}}\left|n_{i}-1\right\rangle \ a_{i}{ }^{\dagger}\left|n_{i}\right\rangle=\sqrt{1+n_{i}}\left|n_{i}+1\right\rangle \ a_{i}\left|n_{1} n_{2} \cdots n_{i} \cdots\right\rangle=\sqrt{n_{i}}\left|n_{1} n_{2} \cdots n_{i}-1 \cdots\right\rangle \ a_{i}^{\dagger}\left|n_{1} n_{2} \cdots n_{i} \cdots\right\rangle= \sqrt{1+n_{i}}\left|n_{1} n_{2}\cdots n_{i}+1 \cdots\right\rangle \ \end{array}$</p>
+<p>虽然学习可能不需要这么功利的记忆，但是量子力学<strong>考试</strong>还是需要记忆一些东西。同时3小时笔算考试注定能算的东西不太多，所以能考的范围也是比较<strong>有限</strong>的。考试嘛，总要有些应试的东西……</p>
+<p>这里以<strong>中科院量子力学811</strong>和山东大学<strong>陈鄂生</strong>老师总结的考研习题集为基准，我个人当时做的公式笔记。一般来说那些本征值本征矢都是常见习题顺手背的，别的基本上都是重点公式，哪怕你能在考场现推也会消耗一定时间，所以推荐基础一般的直接记忆。希望对大家有些帮助，如有错误请指出我会修正，<a href="https://zhida.zhihu.com/search?content_id=198324701&amp;content_type=Article&amp;match_order=1&amp;q=latex&amp;zhida_source=entity" rel="nofollow">latex</a>不熟悉，见谅。</p></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://Blinder32.github.io/gemzhang.github.io">真理尽头</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if(""!=""){
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行 "+diffDay+" 天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.disabled=true;
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","Blinder32/gemzhang.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+
+
+</script>
+<script>MathJax = {tex: {inlineMath: [["$", "$"]]}};</script><script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</html>
