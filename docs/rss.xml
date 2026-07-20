@@ -1,5 +1,170 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>真理尽头</title><link>https://Blinder32.github.io/gemzhang.github.io</link><description>六百六十六，真牛的网站</description><copyright>真理尽头</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/194662847?v=4&amp;size=64</url><title>avatar</title><link>https://Blinder32.github.io/gemzhang.github.io</link></image><lastBuildDate>Mon, 20 Jul 2026 07:30:58 +0000</lastBuildDate><managingEditor>真理尽头</managingEditor><ttl>60</ttl><webMaster>真理尽头</webMaster><item><title>不定积分百题</title><link>https://Blinder32.github.io/gemzhang.github.io/post/bu-ding-ji-fen-bai-ti.html</link><description>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>真理尽头</title><link>https://Blinder32.github.io/gemzhang.github.io</link><description>六百六十六，真牛的网站</description><copyright>真理尽头</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/194662847?v=4&amp;size=64</url><title>avatar</title><link>https://Blinder32.github.io/gemzhang.github.io</link></image><lastBuildDate>Mon, 20 Jul 2026 07:32:09 +0000</lastBuildDate><managingEditor>真理尽头</managingEditor><ttl>60</ttl><webMaster>真理尽头</webMaster><item><title>一个积分</title><link>https://Blinder32.github.io/gemzhang.github.io/post/yi-ge-ji-fen.html</link><description>
+
+[https://www.zhihu.com/question/430982343/answer/1609187069](https://www.zhihu.com/question/430982343/answer/1609187069)
+
+  
+
+[https://www.zhihu.com/question/372248046/answer/1439910777](https://www.zhihu.com/question/372248046/answer/1439910777)
+
+[https://www.zhihu.com/question/424480089/answer/1511332582](https://www.zhihu.com/question/424480089/answer/1511332582)
+
+来写个小总结(=ﾟДﾟ=)
+
+* * *
+
+先来计算
+
+$$\int \frac{1}{1+x^{2n}}{\rm d}x\quad(n\in\mathbb{N^*})$$
+
+记[多项式](https://zhida.zhihu.com/search?content_id=162473096&amp;content_type=Article&amp;match_order=1&amp;q=%E5%A4%9A%E9%A1%B9%E5%BC%8F&amp;zhida_source=entity) $1+x^{2n}$ 的 $2n$ 个根为 ：
+
+$$a_{k}=\cos\frac{2k-1}{2n}\pi+i\sin\frac{2k-1}{2n}\pi,(k=1,2,\cdots,2n)$$  
+则有
+
+$$|a_k|=1,a_k^{2n}=-1$$
+
+$$\bar{a}_k=a_{2n-k+1},a_k\bar{a}_k=1,a_k+\bar{a}_k=2\cos\frac{2k-1}{2n}\pi$$
+
+可设 $\frac{1}{1+x^{2n}}=\sum_{k=1}^{2n}\frac{A_k}{x-a_k}$
+
+$$1=\sum_{k=1}^{2n}\frac{A_k(1+x^{2n})}{x-a_k}{\rm d}x$$
+
+令 $x\to a_i,$ 并利用[洛必达法则](https://zhida.zhihu.com/search?content_id=162473096&amp;content_type=Article&amp;match_order=1&amp;q=%E6%B4%9B%E5%BF%85%E8%BE%BE%E6%B3%95%E5%88%99&amp;zhida_source=entity)可得
+
+$$\begin{align*}1&amp;=\lim _{x \rightarrow a_{i}} \sum_{k=1}^{2 n} \frac{A_{k}\left(1+x^{2 n}\right)}{x-a_{k}}=\lim _{x \rightarrow a_{i}} \frac{A_{i}\left(1+x^{2 n}\right)}{x-a_{i}}\\ &amp;=\lim _{x \rightarrow a_{i}}\left(2 n A_{i} x^{2 n-1}\right)=2 n A_{i} \frac{a_{i}^{2 n}}{a_{i}}=-\frac{2 n A_{i}}{a_{i}} \quad(i=1,2, \cdots, 2 n)\end{align*}$$
+
+即 $A_{k}=-\frac{a_{k}}{2 n} \quad(k=1,2, \cdots, 2 n)$ ，于是
+
+$$\begin{align*} &amp;\frac{1}{1+x^{2 n}}=-\frac{1}{2 n} \sum_{k=1}^{2 n} \frac{a_{k}}{x-a_{k}}=-\frac{1}{2 n} \sum_{k=1}^{n}\left(\frac{a_{k}}{x-a_{k}}+\frac{\bar{a}_{k}}{x-\bar{a}_{k}}\right)\\ =&amp;-\frac{1}{2 n} \sum_{k=1}^{n} \frac{\left(a_{k}+\bar{a}_{k}\right) x-2 a_{k} \bar{a}_{k}}{x^{2}-\left(a_{k}+\bar{a}_{k}\right) x+a_{k} \bar{a}_{k}}=\frac{1}{n} \sum_{k=1}^{n} \frac{1-x \cos \frac{2 k-1}{2 n} \pi}{x^{2}-2 x \cos \frac{2 k-1}{2 n} \pi+1} \end{align*}$$
+
+于是
+
+$$\begin{aligned} \int \frac{\mathrm{d} x}{1+x^{2 n}}=&amp; \frac{1}{n} \sum_{k=1}^{n} \int \frac{1-x \cos \frac{2 k-1}{2 n} \pi}{x^{2}-2 x \cos \frac{2 k-1}{2 n} \pi+1} \mathrm{~d} x=-\frac{1}{2 n} \sum_{k=1}^{n}\left(\cos \frac{2 k-1}{2 n} \pi \int \frac{2 x-2 \cos \frac{2 k-1}{2 n} \pi}{x^{2}-2 x \cos \frac{2 k-1}{2 n} \pi+1} \mathrm{~d} x\right) \\ &amp;+\frac{1}{n} \sum_{k=1}^{n}\left[\sin ^{2} \frac{2 k-1}{2 n} \pi \int \frac{\mathrm{d} x}{\left(x-\cos \frac{2 k-1}{2 n} \pi\right)^{2}+\sin ^{2} \frac{2 k-1}{2 n} \pi}\right] \\ =&amp;-\frac{1}{2 n} \sum_{k-1}^{n}\left[\left(\cos \frac{2 k-1}{2 n} \pi \right)\cdot\ln \left|x^{2}-2 x \cos \frac{2 k-1}{2 n} \pi+1\right|\right] \\ &amp;+\frac{1}{n} \sum_{k=1}^{n}\left(\left(\sin \frac{2 k-1}{2 n} \pi\right)\cdot \arctan \frac{x-\cos \frac{2 k-1}{2 n} \pi}{\sin \frac{2 k-1}{2 n} \pi}\right)+C \end{aligned}$$
+
+对于
+
+$$\int \frac{1}{1+x^{2n+1}}{\rm d}x\quad(n\in\mathbb{N^*})$$
+
+注意到奇数时分解会比偶数时多出一项
+
+同偶数情形可设
+
+$$\frac{1}{1+x^{2n+1}}=\frac{a}{1+x}+\frac{2}{2n+1}\sum_{k=1}^{n}\frac{1-x \cos \frac{2 k-1}{2 n+1} \pi}{x^{2}-2 x \cos \frac{2 k-1}{2 n+1} \pi+1}$$
+
+$$\frac{1+x}{1+x^{2n+1}}=a+(1+x)\frac{2}{2n+1}\sum_{k=1}^{n}\frac{1-x \cos \frac{2 k-1}{2 n+1} \pi}{x^{2}-2 x \cos \frac{2 k-1}{2 n+1} \pi+1}$$
+
+$$a=\lim_{x\to-1}\frac{1+x}{1+x^{2n+1}}=\lim_{x\to-1}\frac{1}{(2n+1)x^{2n}}=\frac{1}{2n+1}$$
+
+则
+
+$$\frac{1}{1+x^{2n+1}}=\frac{1}{(2n+1)(1+x)}+\frac{2}{2n+1}\sum_{k=1}^{n}\frac{1-x \cos \frac{2 k-1}{2 n+1} \pi}{x^{2}-2 x \cos \frac{2 k-1}{2 n+1} \pi+1}$$
+
+同理有
+
+$$\begin{align*} &amp;\int \frac{1}{1+x^{2n+1}}{\rm d}x\\ =&amp;\frac{\ln|1+x|}{2n+1}-\frac{1}{2n+1}\sum_{k-1}^{n}\left[\left(\cos \frac{2 k-1}{2 n+1} \pi\right)\cdot \ln \left|x^{2}-2 x \cos \frac{2 k-1}{2 n+1} \pi+1\right|\right]\\ +&amp;\frac{2}{2n+1} \sum_{k=1}^{n}\left(\left(\sin \frac{2 k-1}{2 n+1} \pi\right) \cdot\arctan \frac{x-\cos \frac{2 k-1}{2 n+1} \pi}{\sin \frac{2 k-1}{2 n+1} \pi}\right)+C  \end{align*}$$
+
+* * *
+
+对于
+
+$$\int\frac{1}{1+x^{2^n}}{\rm d}x\quad(n\geqslant2)$$
+
+类型的[不定积分](https://zhida.zhihu.com/search?content_id=162473096&amp;content_type=Article&amp;match_order=1&amp;q=%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86&amp;zhida_source=entity)有如下公式[^1]
+
+$$\int\frac{1}{1+x^{2^{n}}} {\rm d} x=\sum_{k=1}^{2^{n-2}} \frac{a_{k}}{2^{n+1}}\left[\log \left(\frac{x^{2}+a_{k} x+1}{x^{2}-a_{k} x+1}\right)+2 \tan ^{-1}\left(\frac{a_{k} x}{1-x^{2}}\right)\right]+C$$
+
+其中有 $a_k$ 如下形式
+
+$$\sqrt{2 \pm \sqrt{2 \pm \sqrt{2 \pm \cdots \pm \sqrt{2}}}}$$
+
+$a_k$ 中 $2$ 的个数为 $n-1$
+
+例如
+
+$n=2$ 时 , $a_k$ 中 $2$ 的个数为 $1$
+
+$$a_1=\sqrt{2}$$
+
+$$\int\frac{1}{1+x^{4}} {\rm d} x=\frac{\sqrt{2}}{8}\left[\log \left(\frac{x^{2}+\sqrt{2} x+1}{x^{2}-\sqrt{2} x+1}\right)+2 \tan ^{-1}\left(\frac{\sqrt{2} x}{1-x^{2}}\right)\right]+C$$
+
+$n=3$ 时 , $a_k$ 中 $2$ 的个数为 $2$
+
+$$a_{1}=\sqrt{2+\sqrt{2}}, a_{2}=\sqrt{2-\sqrt{2}}$$
+
+$$\begin{align*}\int\frac{1}{1+x^{8}} {\rm d} x&amp;=\frac{\sqrt{2+\sqrt{2}}}{16}\left[\log \left(\frac{x^{2}+\sqrt{2+\sqrt{2}}x+1}{x^{2}-\sqrt{2+\sqrt{2}}x+1}\right)+2 \tan ^{-1}\left(\frac{\sqrt{2+\sqrt{2}} x}{1-x^{2}}\right)\right]\\ &amp;+\frac{\sqrt{2-\sqrt{2}}}{16}\left[\log \left(\frac{x^{2}+\sqrt{2-\sqrt{2}}x+1}{x^{2}-\sqrt{2-\sqrt{2}}x+1}\right)+2 \tan ^{-1}\left(\frac{\sqrt{2-\sqrt{2}} x}{1-x^{2}}\right)\right]+C  \end{align*}$$
+
+$n=4$ 时 , $a_k$ 中 $2$ 的个数为 $3$
+
+$$\begin{array}{c} a_{1}=\sqrt{2+\sqrt{2+\sqrt{2}}}, \quad a_{2}=\sqrt{2+\sqrt{2-\sqrt{2}}} \\ a_{3}=\sqrt{2-\sqrt{2+\sqrt{2}}}, \quad a_{4}=\sqrt{2-\sqrt{2-\sqrt{2}}} \end{array}$$
+
+$$\int\frac{1}{1+x^{16}} {\rm d} x=\cdots\cdots$$
+
+* * *
+
+这个积分也可以用**Gauss Hypergeometric Function**表示
+
+$$\int \frac{1}{x^n+1} \, {\rm d}x=x \, _2F_1\left(1,\frac{1}{n};1+\frac{1}{n};-x^n\right)$$
+
+具体推导见[@Miaplacidus](https://www.zhihu.com/people/f57766b19a55a4140a1690ac0d9d651d)的回答
+
+[https://www.zhihu.com/question/358657559/answer/1103157380](https://www.zhihu.com/question/358657559/answer/1103157380)
+
+* * *
+
+然后就是相关的定积分
+
+$$\color{red}{\int_{0}^{+\infty}\frac{{\rm d}x}{a^n+x^n}=\frac{a\pi}{na^n\sin\frac{\pi}{n}}}$$
+
+令 $y=\left(\frac{x}{a}\right)^{n},$ 不难得到
+
+$$\int_{0}^{+\infty}\frac{{\rm d}x}{a^n+x^n}=\frac{a}{na^n}\int_{0}^{+\infty}\frac{y^{\frac{1}{n}-1}}{1+y}\,{\rm d}y$$
+
+利用余元公式
+
+$$\int_{0}^{+\infty}\frac{x^{p-1}}{1+x}\,dx=\frac{\pi}{\sin(p\pi )}$$
+
+即可得到结果
+
+证明可参考以下文章
+
+[https://www.zhihu.com/question/391429390/answer/1194671552](https://www.zhihu.com/question/391429390/answer/1194671552)
+
+[https://zhuanlan.zhihu.com/p/114595109](https://zhuanlan.zhihu.com/p/114595109)
+
+[https://zhuanlan.zhihu.com/p/137193580](https://zhuanlan.zhihu.com/p/137193580)
+
+[https://zhuanlan.zhihu.com/p/315959447](https://zhuanlan.zhihu.com/p/315959447)
+
+  
+
+  
+
+$$\color{red}{ \begin{align*} \int_0^1 \frac{1}{1+x^p}{\rm d}x&amp;=\frac{1}{2p}\left[\psi\left(\frac{1}{2p} + \frac12\right) - \psi\left(\frac{1}{2p}\right)\right] \end{align*} }$$
+
+其中 $\psi(z)$ 是 **Digamma Function**
+
+$\color{blue}{\rm Proof:}$
+
+置 $x^p=t$ , 则
+
+$$\begin{align*} &amp;2p\int_0^1 \frac{dx}{1+x^p} \\ =&amp;2 \int_0^1 \frac{t^{\frac{1}{p}-1}}{1+t} dt= 2\int_0^1 \sum_{n=0}^\infty (-1)^n t^{\frac{1}{p}+n-1} dt\\ =&amp; 2\sum_{n=0}^\infty\int_0^1 (-1)^n t^{\frac{1}{p}+n-1} dt\\ =&amp;2\sum_{n=0}^\infty\int_0^1 (-1)^n t^{\frac{1}{p}+n-1} dt\\ =&amp;2\sum_{n=0}^\infty\frac{(-1)^n}{\frac{1}{p}+n}\\ =&amp; \frac{1}{\frac{1}{2p}} - \frac{1}{\frac{1}{2p} + \frac12} + \sum_{n=1}^\infty\left(\frac{1}{\frac{1}{2p}+n} - \frac{1}{\frac{1}{2p} + n + \frac12}\right)\\ =&amp;\psi\left(\frac{1}{2p} + \frac12\right) - \psi\left(\frac{1}{2p}\right) \end{align*}$$
+
+最后一步利用了
+
+$$\psi(z)=-\gamma-\frac{1}{z}+\sum_{n=1}^{\infty}\left(\frac{1}{n}-\frac{1}{n+z}\right)$$
+
+  
+
+电子版
+
+链接: [https://pan.baidu.com/s/10RNPSBF6BNtg2I2RhmSdHA](https://link.zhihu.com/?target=https%3A//pan.baidu.com/s/10RNPSBF6BNtg2I2RhmSdHA)
+
+提取码: 578c
+
+## 参考
+
+[^1]: Notebooks of Srinivsu Rmanujan, Vol. 2, Tata Institute of Fundamental Research, Bombay, 1957. 。</description><guid isPermaLink="true">https://Blinder32.github.io/gemzhang.github.io/post/yi-ge-ji-fen.html</guid><pubDate>Mon, 20 Jul 2026 07:31:41 +0000</pubDate></item><item><title>不定积分百题</title><link>https://Blinder32.github.io/gemzhang.github.io/post/bu-ding-ji-fen-bai-ti.html</link><description>
 ## 前言
 
 试着解答一下虚调子大佬的王者百题,磨砺一下自己的不定积分水平。</description><guid isPermaLink="true">https://Blinder32.github.io/gemzhang.github.io/post/bu-ding-ji-fen-bai-ti.html</guid><pubDate>Mon, 20 Jul 2026 07:30:33 +0000</pubDate></item><item><title>施瓦西解</title><link>https://Blinder32.github.io/gemzhang.github.io/post/shi-wa-xi-jie.html</link><description>
