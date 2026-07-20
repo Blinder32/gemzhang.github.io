@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/194662847?v=4&size=64"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="
+
+### 0\. 全书统一约定
+
+### 0.1 单位、度规与[四维](https://zhida.zhihu.com/search?content_id=278771573&content_type=Article&match_order=1&q=%E5%9B%9B%E7%BB%B4&zhida_source=entity)记号
+
+关键词：自然单位制、[Minkowski 度规](https://zhida.zhihu.com/search?content_id=278771573&content_type=Article&match_order=1&q=Minkowski+%E5%BA%A6%E8%A7%84&zhida_source=entity)、质壳、正能量、[Lorentz 不变量](https://zhida.zhihu.com/search?content_id=278771573&content_type=Article&match_order=1&q=Lorentz+%E4%B8%8D%E5%8F%98%E9%87%8F&zhida_source=entity)。">
+<meta property="og:title" content="量子场论笔记">
+<meta property="og:description" content="
+
+### 0\. 全书统一约定
+
+### 0.1 单位、度规与[四维](https://zhida.zhihu.com/search?content_id=278771573&content_type=Article&match_order=1&q=%E5%9B%9B%E7%BB%B4&zhida_source=entity)记号
+
+关键词：自然单位制、[Minkowski 度规](https://zhida.zhihu.com/search?content_id=278771573&content_type=Article&match_order=1&q=Minkowski+%E5%BA%A6%E8%A7%84&zhida_source=entity)、质壳、正能量、[Lorentz 不变量](https://zhida.zhihu.com/search?content_id=278771573&content_type=Article&match_order=1&q=Lorentz+%E4%B8%8D%E5%8F%98%E9%87%8F&zhida_source=entity)。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://Blinder32.github.io/gemzhang.github.io/post/liang-zi-chang-lun-bi-ji.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/194662847?v=4&size=64">
+<title>量子场论笔记</title>
+
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">量子场论笔记</h1>
+<div class="title-right">
+    <a href="https://Blinder32.github.io/gemzhang.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/Blinder32/gemzhang.github.io/issues/3" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h3>0. 全书统一约定</h3>
+<h3>0.1 单位、度规与<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E5%9B%9B%E7%BB%B4&amp;zhida_source=entity" rel="nofollow">四维</a>记号</h3>
+<p>关键词：自然单位制、<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=Minkowski+%E5%BA%A6%E8%A7%84&amp;zhida_source=entity" rel="nofollow">Minkowski 度规</a>、质壳、正能量、<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=Lorentz+%E4%B8%8D%E5%8F%98%E9%87%8F&amp;zhida_source=entity" rel="nofollow">Lorentz 不变量</a>。</p>
+<p>$$\hbar=c=1,\qquad \epsilon_0=\mu_0=1,\qquad \alpha=\frac{e^2}{4\pi}.$$</p>
+<p>用途：把质量、能量和<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E5%8A%A8%E9%87%8F&amp;zhida_source=entity" rel="nofollow">动量</a>统一用能量单位表示。</p>
+<p>$$g_{\mu\nu}=g^{\mu\nu}=\operatorname{diag}(+1,-1,-1,-1), \qquad p\cdot x=p^0x^0-\mathbf p\cdot\mathbf x.$$</p>
+<p>$$p^\mu=(E_{\mathbf p},\mathbf p),\qquad p_\mu=(E_{\mathbf p},-\mathbf p),\qquad E_{\mathbf p}=\sqrt{\mathbf p^2+m^2}.$$</p>
+<p>物理外线满足</p>
+<p>$$p^2=m^2,\qquad p^0=E_{\mathbf p}&gt;0.$$</p>
+<p>易错点：内部传播子的四维动量通常不在壳，即不要求 $p^2=m^2$。</p>
+<h3>0.2 <a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=Fourier+%E4%B8%8E%E5%BD%92%E4%B8%80%E5%8C%96%E7%BA%A6%E5%AE%9A&amp;zhida_source=entity" rel="nofollow">Fourier 与归一化约定</a></h3>
+<p>讲义统一使用</p>
+<p>$$\int\frac{d^3\mathbf p}{(2\pi)^3}\frac{1}{\sqrt{2E_{\mathbf p}}}$$</p>
+<p>作为<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E8%87%AA%E7%94%B1%E5%9C%BA&amp;zhida_source=entity" rel="nofollow">自由场</a>平面波展开的测度与归一化。<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E5%8D%95%E7%B2%92%E5%AD%90%E6%80%81&amp;zhida_source=entity" rel="nofollow">单粒子态</a>采用相对论性归一化：</p>
+<p>$$|\mathbf p\rangle=\sqrt{2E_{\mathbf p}},a_{\mathbf p}^\dagger|0\rangle,$$</p>
+<p>$$\langle\mathbf q|\mathbf p\rangle =2E_{\mathbf p}(2\pi)^3\delta^{(3)}(\mathbf p-\mathbf q).$$</p>
+<p>用途：保证单粒子态内积与<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E7%9B%B8%E7%A9%BA%E9%97%B4&amp;zhida_source=entity" rel="nofollow">相空间</a>测度具有 Lorentz 不变性。</p>
+<p>Lorentz 不变的单粒子相空间测度：</p>
+<p>$$\frac{d^3\mathbf p}{(2\pi)^3,2E_{\mathbf p}}.$$</p>
+<p>一粒子子空间的<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E5%AE%8C%E5%A4%87%E6%80%A7&amp;zhida_source=entity" rel="nofollow">完备性</a>可写成</p>
+<p>$$\mathbf 1_{1\text{-particle}} =\int\frac{d^3\mathbf p}{(2\pi)^3,2E_{\mathbf p}} |\mathbf p\rangle\langle\mathbf p|.$$</p>
+<h3>0.3 一张总路线图</h3>
+<p>$$\mathcal L_{\rm free} \Longrightarrow \text{运动方程与平面波展开} \Longrightarrow \text{传播子和内外线规则},$$</p>
+<p>$$\mathcal L_{\rm int} \Longrightarrow \text{顶点规则}, \qquad S=T\exp!\left(i\int d^4x,\mathcal L_{\rm int}\right) \Longrightarrow \text{微扰展开与 Feynman 图}.$$</p>
+<p>这里最后一式采用 $\mathcal H_{\rm int}=-\mathcal L_{\rm int}$ 的常见情形。用途：自由部分决定“线”，相互作用部分决定“点”。</p>
+<hr>
+<h3>2. <a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E9%87%8F%E5%AD%90%E6%A0%87%E9%87%8F%E5%9C%BA&amp;zhida_source=entity" rel="nofollow">量子标量场</a></h3>
+<h3>2.1 <a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E5%AE%9E%E6%A0%87%E9%87%8F%E5%9C%BA&amp;zhida_source=entity" rel="nofollow">实标量场</a></h3>
+<p>关键词：自共轭、<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=Klein-Gordon+%E6%96%B9%E7%A8%8B&amp;zhida_source=entity" rel="nofollow">Klein-Gordon 方程</a>、玻色对易关系、纯中性粒子。</p>
+<h3><a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E6%8B%89%E6%B0%8F%E9%87%8F&amp;zhida_source=entity" rel="nofollow">拉氏量</a>、运动方程与<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E5%85%B1%E8%BD%AD%E5%8A%A8%E9%87%8F&amp;zhida_source=entity" rel="nofollow">共轭动量</a></h3>
+<p>$$\phi^\dagger(x)=\phi(x),$$</p>
+<p>$$\mathcal L =\frac12(\partial_\mu\phi)\partial^\mu\phi -\frac12m^2\phi^2. \tag{2.79}$$</p>
+<p>用途：自由实标量场的起点。</p>
+<p>$$(\partial^2+m^2)\phi(x)=0, \qquad \partial^2\equiv\partial_\mu\partial^\mu. \tag{2.84}$$</p>
+<p>$$\pi(x)=\frac{\partial\mathcal L}{\partial(\partial_0\phi)} =\partial_0\phi(x). \tag{2.85}$$</p>
+<h3>等时正则<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=2&amp;q=%E5%AF%B9%E6%98%93%E5%85%B3%E7%B3%BB&amp;zhida_source=entity" rel="nofollow">对易关系</a></h3>
+<p>$$[\phi(\mathbf x,t),\pi(\mathbf y,t)] =i\delta^{(3)}(\mathbf x-\mathbf y),$$</p>
+<p>$$[\phi(\mathbf x,t),\phi(\mathbf y,t)] =[\pi(\mathbf x,t),\pi(\mathbf y,t)]=0. \tag{2.87}$$</p>
+<p>用途：把经典场提升为<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E7%8E%BB%E8%89%B2%E9%87%8F%E5%AD%90%E5%9C%BA&amp;zhida_source=entity" rel="nofollow">玻色量子场</a>，并推出产生湮灭算符的对易关系。</p>
+<h3>平面波展开：必背</h3>
+<p>$$\boxed{ \phi(x)=\int\frac{d^3\mathbf p}{(2\pi)^3} \frac{1}{\sqrt{2E_{\mathbf p}}} \left(a_{\mathbf p}e^{-ip\cdot x} +a_{\mathbf p}^\dagger e^{ip\cdot x}\right) } \tag{2.103}$$</p>
+<p>其中 $p^0=E_{\mathbf p}&amp;gt;0$。用途：识别正能部分为湮灭算符、负能部分为<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E4%BA%A7%E7%94%9F%E7%AE%97%E7%AC%A6&amp;zhida_source=entity" rel="nofollow">产生算符</a>。</p>
+<p>$$\pi(x)=\partial_0\phi(x) =\int\frac{d^3\mathbf p}{(2\pi)^3} \frac{-iE_{\mathbf p}}{\sqrt{2E_{\mathbf p}}} \left(a_{\mathbf p}e^{-ip\cdot x} -a_{\mathbf p}^\dagger e^{ip\cdot x}\right). \tag{2.105}$$</p>
+<h3>产生湮灭算符</h3>
+<p>$$[a_{\mathbf p},a_{\mathbf q}^\dagger] =(2\pi)^3\delta^{(3)}(\mathbf p-\mathbf q),$$</p>
+<p>$$[a_{\mathbf p},a_{\mathbf q}] =[a_{\mathbf p}^\dagger,a_{\mathbf q}^\dagger]=0. \tag{2.122}$$</p>
+<h3><a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E5%93%88%E5%AF%86%E9%A1%BF%E9%87%8F&amp;zhida_source=entity" rel="nofollow">哈密顿量</a>、动量、<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E7%B2%92%E5%AD%90%E6%95%B0&amp;zhida_source=entity" rel="nofollow">粒子数</a></h3>
+<p>未正规排序的哈密顿量含真空零点能：</p>
+<p>$$H=\int\frac{d^3\mathbf p}{(2\pi)^3} E_{\mathbf p}\left[a_{\mathbf p}^\dagger a_{\mathbf p} +\frac12(2\pi)^3\delta^{(3)}(0)\right].$$</p>
+<p>正规排序后：</p>
+<p>$$:H:=\int\frac{d^3\mathbf p}{(2\pi)^3} E_{\mathbf p}a_{\mathbf p}^\dagger a_{\mathbf p},$$</p>
+<p>$$\mathbf P=\int\frac{d^3\mathbf p}{(2\pi)^3} \mathbf p,a_{\mathbf p}^\dagger a_{\mathbf p}, \tag{2.144}$$</p>
+<p>$$N=\int\frac{d^3\mathbf p}{(2\pi)^3} a_{\mathbf p}^\dagger a_{\mathbf p}. \tag{2.174}$$</p>
+<p>用途：分别读取<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E5%A4%9A%E7%B2%92%E5%AD%90%E6%80%81&amp;zhida_source=entity" rel="nofollow">多粒子态</a>的总能量、<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E6%80%BB%E5%8A%A8%E9%87%8F&amp;zhida_source=entity" rel="nofollow">总动量</a>和粒子数。</p>
+<h3>单粒子态</h3>
+<p>$$|\mathbf p\rangle =\sqrt{2E_{\mathbf p}},a_{\mathbf p}^\dagger|0\rangle, \qquad \langle\mathbf q|\mathbf p\rangle =2E_{\mathbf p}(2\pi)^3\delta^{(3)}(\mathbf p-\mathbf q). \tag{2.152--2.163}$$</p>
+<p>$$\langle\mathbf p|\phi(x)|0\rangle=e^{ip\cdot x}. \tag{2.165}$$</p>
+<p>用途：后一式直接导出实标量外线的 Feynman 规则为 $1$。</p>
+<h3>实标量场速背清单</h3>
+<ol>
+<li>
+$\mathcal L=\frac12(\partial\phi)^2-\frac12m^2\phi^2$。</li>
+<li>
+$(\partial^2+m^2)\phi=0$，$\pi=\dot\phi$。</li>
+<li>平面波展开的归一化是 $1/\sqrt{2E_{\mathbf p}}$。</li>
+<li>
+$[a_{\mathbf p},a_{\mathbf q}^\dagger]=(2\pi)^3\delta^{(3)}(\mathbf p-\mathbf q)$。</li>
+<li>实场只有一套 $a,a^\dagger$，正反粒子相同。</li>
+<li>
+$|\mathbf p\rangle=\sqrt{2E_{\mathbf p}}a_{\mathbf p}^\dagger|0\rangle$。</li>
+</ol>
+<h3>2.2 <a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E5%A4%8D%E6%A0%87%E9%87%8F%E5%9C%BA&amp;zhida_source=entity" rel="nofollow">复标量场</a></h3>
+<p>关键词：非自共轭、正反粒子、两套产生湮灭算符、$U(1)$ 守恒荷。</p>
+<h3>拉氏量与运动方程</h3>
+<p>$$\phi^\dagger\neq\phi,$$</p>
+<p>$$\mathcal L=(\partial_\mu\phi^\dagger)\partial^\mu\phi -m^2\phi^\dagger\phi. \tag{2.179}$$</p>
+<p>$$(\partial^2+m^2)\phi=0, \qquad (\partial^2+m^2)\phi^\dagger=0. \tag{2.181}$$</p>
+<p>两个独立正则变量的共轭动量：</p>
+<p>$$\pi=\frac{\partial\mathcal L}{\partial(\partial_0\phi)} =\partial_0\phi^\dagger, \qquad \pi^\dagger=\frac{\partial\mathcal L}{\partial(\partial_0\phi^\dagger)} =\partial_0\phi.$$</p>
+<p>易错点：$\phi$ 的共轭动量是 $\dot\phi^\dagger$，不是 $\dot\phi$。</p>
+<h3>等时正则对易关系</h3>
+<p>$$[\phi(\mathbf x,t),\pi(\mathbf y,t)] =i\delta^{(3)}(\mathbf x-\mathbf y), \qquad [\phi^\dagger(\mathbf x,t),\pi^\dagger(\mathbf y,t)] =i\delta^{(3)}(\mathbf x-\mathbf y).$$</p>
+<p>$$[\phi,\phi]=[\pi,\pi]=[\phi^\dagger,\phi^\dagger] =[\pi^\dagger,\pi^\dagger]=0,$$</p>
+<p>$$[\phi,\pi^\dagger]=[\phi^\dagger,\pi] =[\phi,\phi^\dagger]=[\pi,\pi^\dagger]=0. \tag{2.192}$$</p>
+<p>用途：$(\phi,\pi)$ 与 $(\phi^\dagger,\pi^\dagger)$ 是两对独立正则变量。</p>
+<h3>平面波展开：必背</h3>
+<p>$$\boxed{ \phi(x)=\int\frac{d^3\mathbf p}{(2\pi)^3} \frac{1}{\sqrt{2E_{\mathbf p}}} \left(a_{\mathbf p}e^{-ip\cdot x} +b_{\mathbf p}^\dagger e^{ip\cdot x}\right) } \tag{2.187}$$</p>
+<p>$$\boxed{ \phi^\dagger(x)=\int\frac{d^3\mathbf p}{(2\pi)^3} \frac{1}{\sqrt{2E_{\mathbf p}}} \left(b_{\mathbf p}e^{-ip\cdot x} +a_{\mathbf p}^\dagger e^{ip\cdot x}\right) } \tag{2.189}$$</p>
+<p>用途：$a^\dagger$ 产生<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E6%AD%A3%E7%B2%92%E5%AD%90&amp;zhida_source=entity" rel="nofollow">正粒子</a>，$b^\dagger$ 产生<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=3&amp;q=%E5%8F%8D%E7%B2%92%E5%AD%90&amp;zhida_source=entity" rel="nofollow">反粒子</a>；<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E5%A4%8D%E5%9C%BA&amp;zhida_source=entity" rel="nofollow">复场</a>的粒子线有荷流箭头。</p>
+<h3>对易关系</h3>
+<p>$$[a_{\mathbf p},a_{\mathbf q}^\dagger] =[b_{\mathbf p},b_{\mathbf q}^\dagger] =(2\pi)^3\delta^{(3)}(\mathbf p-\mathbf q),$$</p>
+<p>同类的其余对易子以及 $a$ 与 $b$ 之间的所有对易子均为零。（讲义式 2.193）</p>
+<h3>
+$U(1)$ 流与守恒荷</h3>
+<p>在 $\phi\to e^{iq\theta}\phi$ 下，</p>
+<p>$$J^\mu=iq\left[\phi^\dagger\partial^\mu\phi -(\partial^\mu\phi^\dagger)\phi\right] =iq\phi^\dagger\overleftrightarrow{\partial^\mu}\phi, \qquad \partial_\mu J^\mu=0.$$</p>
+<p>正规排序后的荷：</p>
+<p>$$Q=q\int\frac{d^3\mathbf p}{(2\pi)^3} \left(a_{\mathbf p}^\dagger a_{\mathbf p} -b_{\mathbf p}^\dagger b_{\mathbf p}\right). \tag{2.212}$$</p>
+<p>用途：正粒子带荷 $+q$，反粒子带荷 $-q$。</p>
+<h3>能量与动量</h3>
+<p>$$:H:=\int\frac{d^3\mathbf p}{(2\pi)^3}E_{\mathbf p} \left(a_{\mathbf p}^\dagger a_{\mathbf p} +b_{\mathbf p}^\dagger b_{\mathbf p}\right),$$</p>
+<p>$$\mathbf P=\int\frac{d^3\mathbf p}{(2\pi)^3}\mathbf p \left(a_{\mathbf p}^\dagger a_{\mathbf p} +b_{\mathbf p}^\dagger b_{\mathbf p}\right). \tag{2.215--2.216}$$</p>
+<h3>正、反标量单粒子态</h3>
+<p>$$|\mathbf p^+\rangle =\sqrt{2E_{\mathbf p}},a_{\mathbf p}^\dagger|0\rangle, \qquad |\mathbf p^-\rangle =\sqrt{2E_{\mathbf p}},b_{\mathbf p}^\dagger|0\rangle. \tag{7.130--7.131}$$</p>
+<p>$$\langle\mathbf q^\pm|\mathbf p^\pm\rangle =2E_{\mathbf p}(2\pi)^3\delta^{(3)}(\mathbf p-\mathbf q), \qquad \langle\mathbf q^\mp|\mathbf p^\pm\rangle=0.$$</p>
+<p>一粒子子空间的完备性：</p>
+<p>$$\mathbf 1_{1\text{-particle}} =\sum_{\eta=\pm}\int\frac{d^3\mathbf p}{(2\pi)^3,2E_{\mathbf p}} |\mathbf p^\eta\rangle\langle\mathbf p^\eta|.$$</p>
+<p>用途：正、反粒子态的归一化相同；在完备性关系中必须把两类态都求和。</p>
+<h3>复标量场速背清单</h3>
+<ol>
+<li>
+$\mathcal L=(\partial\phi^\dagger)(\partial\phi)-m^2\phi^\dagger\phi$。</li>
+<li>
+$\pi=\dot\phi^\dagger$，$\pi^\dagger=\dot\phi$。</li>
+<li>
+$\phi\sim ae^{-ipx}+b^\dagger e^{ipx}$，$\phi^\dagger\sim be^{-ipx}+a^\dagger e^{ipx}$。</li>
+<li>
+$a^\dagger$ 产生粒子，$b^\dagger$ 产生反粒子。</li>
+<li>
+$Q=q(N_a-N_b)$，但 $H$ 与 $\mathbf P$ 中正反粒子贡献同号。</li>
+</ol>
+<hr>
+<h3>4. <a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E9%87%8F%E5%AD%90%E7%9F%A2%E9%87%8F%E5%9C%BA&amp;zhida_source=entity" rel="nofollow">量子矢量场</a></h3>
+<h3>4.1 有质量实矢量场（Proca 场）</h3>
+<p>关键词：<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=Proca+%E6%96%B9%E7%A8%8B&amp;zhida_source=entity" rel="nofollow">Proca 方程</a>、三个物理<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E6%9E%81%E5%8C%96&amp;zhida_source=entity" rel="nofollow">极化</a>、横向条件、极化完备性。</p>
+<p>$$F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu,$$</p>
+<p>$$\mathcal L=-\frac14F_{\mu\nu}F^{\mu\nu} +\frac12m_A^2A_\mu A^\mu.$$</p>
+<p>$$\partial_\mu F^{\mu\nu}+m_A^2A^\nu=0.$$</p>
+<p>由运动方程得到约束与 KG 方程：</p>
+<p>$$\partial_\mu A^\mu=0, \qquad (\partial^2+m_A^2)A^\mu=0.$$</p>
+<p>用途：有质量<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E8%87%AA%E6%97%8B&amp;zhida_source=entity" rel="nofollow">自旋</a> 1 粒子只有 $\lambda=+,0,-$ 三个物理极化。</p>
+<h3><a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E6%9E%81%E5%8C%96%E7%9F%A2%E9%87%8F&amp;zhida_source=entity" rel="nofollow">极化矢量</a></h3>
+<p>$$p_\mu\epsilon^\mu(\mathbf p,\lambda)=0,$$</p>
+<p>$$\epsilon^*(\mathbf p,\lambda)\cdot\epsilon(\mathbf p,\lambda') =-\delta_{\lambda\lambda'},$$</p>
+<p>$$\boxed{ \sum_{\lambda=\pm,0} \epsilon^\mu(\mathbf p,\lambda)\epsilon^{\nu *}(\mathbf p,\lambda) =-g^{\mu\nu}+\frac{p^\mu p^\nu}{m_A^2} }. \tag{4.102}$$</p>
+<p>用途：最后一式用于有质量矢量外线的极化求和和传播子分子。</p>
+<h3>平面波展开</h3>
+<p>$$A^\mu(x)=\int\frac{d^3\mathbf p}{(2\pi)^3} \frac{1}{\sqrt{2E_{\mathbf p}}} \sum_{\lambda=\pm,0} \left[\epsilon^\mu(\mathbf p,\lambda)a_{\mathbf p,\lambda}e^{-ip\cdot x} +\epsilon^{\mu *}(\mathbf p,\lambda)a_{\mathbf p,\lambda}^\dagger e^{ip\cdot x}\right].$$</p>
+<p>$$[a_{\mathbf p,\lambda},a_{\mathbf q,\lambda'}^\dagger] =(2\pi)^3\delta_{\lambda\lambda'} \delta^{(3)}(\mathbf p-\mathbf q).$$</p>
+<p>单粒子态：</p>
+<p>$$|\mathbf p,\lambda\rangle =\sqrt{2E_{\mathbf p}},a_{\mathbf p,\lambda}^\dagger|0\rangle,$$</p>
+<p>$$\langle\mathbf q,\lambda'|\mathbf p,\lambda\rangle =2E_{\mathbf p}(2\pi)^3\delta_{\lambda\lambda'} \delta^{(3)}(\mathbf p-\mathbf q).$$</p>
+<p>用途：对有质量矢量外线求和时，$\lambda=\pm,0$。</p>
+<h3>4.2 无质量实矢量场</h3>
+<p>关键词：规范冗余、规范固定、两个物理极化、Feynman 规范。</p>
+<p>$$\mathcal L=-\frac14F_{\mu\nu}F^{\mu\nu}, \qquad A_\mu\to A_\mu+\partial_\mu\chi.$$</p>
+<p>加入协变规范固定项：</p>
+<p>$$\mathcal L_{\rm gf}=-\frac{1}{2\xi}(\partial_\mu A^\mu)^2.$$</p>
+<p>Feynman 规范取 $\xi=1$。物理光子只有 $\lambda=\pm$ 两个横向极化：</p>
+<p>$$p\cdot\epsilon(\mathbf p,\lambda)=0.$$</p>
+<p>Feynman 规范下完整<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E8%A7%84%E8%8C%83%E5%9C%BA&amp;zhida_source=entity" rel="nofollow">规范场</a>的平面波展开包含四个极化分量：</p>
+<p>$$A^\mu(x)=\int\frac{d^3\mathbf p}{(2\pi)^3} \frac{1}{\sqrt{2E_{\mathbf p}}} \sum_{\sigma=0}^{3}e^\mu(\mathbf p,\sigma) \left[b_{\mathbf p,\sigma}e^{-ip\cdot x} +b_{\mathbf p,\sigma}^\dagger e^{ip\cdot x}\right], \qquad E_{\mathbf p}=|\mathbf p|. \tag{4.229}$$</p>
+<p>$$[b_{\mathbf p,\sigma},b_{\mathbf q,\sigma'}^\dagger] =-(2\pi)^3g_{\sigma\sigma'}\delta^{(3)}(\mathbf p-\mathbf q),$$</p>
+<p>$$[b_{\mathbf p,\sigma},b_{\mathbf q,\sigma'}] =[b_{\mathbf p,\sigma}^\dagger,b_{\mathbf q,\sigma'}^\dagger]=0. \tag{4.233}$$</p>
+<p>用途：四分量展开便于保持 Lorentz 协变；其中时间样与纵向分量不是外部物理光子态。</p>
+<p>对与<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E5%AE%88%E6%81%92%E6%B5%81&amp;zhida_source=entity" rel="nofollow">守恒流</a>相连的外光子，规范相关项不贡献，因此极化求和中可作替换</p>
+<p>$$\sum_{\lambda=\pm}\epsilon_\mu^*(p,\lambda)\epsilon_\nu(p,\lambda) \longrightarrow -g_{\mu\nu}.$$</p>
+<p>适用条件：<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E6%8C%AF%E5%B9%85&amp;zhida_source=entity" rel="nofollow">振幅</a>满足 <a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=Ward+%E6%81%92%E7%AD%89%E5%BC%8F&amp;zhida_source=entity" rel="nofollow">Ward 恒等式</a> $p_\mu\mathcal M^\mu=0$。</p>
+<p>物理光子单粒子态仍取</p>
+<p>$$|\mathbf p,\lambda\rangle =\sqrt{2E_{\mathbf p}},a_{\mathbf p,\lambda}^\dagger|0\rangle, \qquad \lambda=\pm.$$</p>
+<p>用途：光子的完备性只在两个物理横向极化上求和。</p>
+<h3>矢量场速背清单</h3>
+<ol>
+<li>Proca：$-\frac14F^2+\frac12m^2A^2$。</li>
+<li>有质量：$p\cdot\epsilon=0$，共有三个极化。</li>
+<li>
+$\sum\epsilon^\mu\epsilon^{\nu *}=-g^{\mu\nu}+p^\mu p^\nu/m^2$。</li>
+<li>无质量规范场要先规范固定；Feynman 规范是 $\xi=1$。</li>
+<li>物理光子只有两个横向极化。</li>
+</ol>
+<hr>
+<h3>5. <a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E9%87%8F%E5%AD%90%E6%97%8B%E9%87%8F%E5%9C%BA&amp;zhida_source=entity" rel="nofollow">量子旋量场</a></h3>
+<h3>5.1 Clifford 代数与 <a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=Dirac+%E7%9F%A9%E9%98%B5&amp;zhida_source=entity" rel="nofollow">Dirac 矩阵</a></h3>
+<p>关键词：Clifford 代数、Dirac 共轭、$\gamma^5$、手征投影、<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E5%8F%8C%E7%BA%BF%E6%80%A7%E5%9E%8B&amp;zhida_source=entity" rel="nofollow">双线性型</a>。</p>
+<p>$$\boxed{{\gamma^\mu,\gamma^\nu}=2g^{\mu\nu}\mathbf 1}. \tag{5.1}$$</p>
+<p>$$(\gamma^0)^\dagger=\gamma^0, \qquad (\gamma^i)^\dagger=-\gamma^i, \qquad (\gamma^\mu)^\dagger=\gamma^0\gamma^\mu\gamma^0.$$</p>
+<p>$$\bar\psi\equiv\psi^\dagger\gamma^0, \qquad \not p\equiv p_\mu\gamma^\mu.$$</p>
+<p>$$\sigma^{\mu\nu}\equiv\frac{i}{2}[\gamma^\mu,\gamma^\nu], \qquad \gamma^5\equiv i\gamma^0\gamma^1\gamma^2\gamma^3.$$</p>
+<p>$$(\gamma^5)^\dagger=\gamma^5, \qquad (\gamma^5)^2=1, \qquad {\gamma^5,\gamma^\mu}=0.$$</p>
+<h3>手征投影</h3>
+<p>$$P_L=\frac{1-\gamma^5}{2}, \qquad P_R=\frac{1+\gamma^5}{2},$$</p>
+<p>$$P_L^2=P_L,\quad P_R^2=P_R,\quad P_LP_R=0,\quad P_L+P_R=1.$$</p>
+<p>$$\psi_L=P_L\psi,\qquad \psi_R=P_R\psi,$$</p>
+<p>$$\bar\psi_L=\bar\psi P_R,\qquad \bar\psi_R=\bar\psi P_L.$$</p>
+<p>易错点：Dirac 共轭后左右投影互换。</p>
+<h3>五类 Dirac 双线性型</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>双线性型</th>
+<th>Lorentz 类型</th>
+<th>常见用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\bar\psi\psi</td>
+<td>标量</td>
+<td>质量项、标量 Yukawa 耦合</td>
+</tr>
+<tr>
+<td>\bar\psi\gamma^5\psi</td>
+<td>赝标量</td>
+<td>赝标量耦合</td>
+</tr>
+<tr>
+<td>\bar\psi\gamma^\mu\psi</td>
+<td>矢量</td>
+<td>QED 电磁流</td>
+</tr>
+<tr>
+<td>\bar\psi\gamma^\mu\gamma^5\psi</td>
+<td>轴矢量</td>
+<td>手征流、弱相互作用</td>
+</tr>
+<tr>
+<td>\bar\psi\sigma^{\mu\nu}\psi</td>
+<td>反对称张量</td>
+<td>磁矩、Pauli 项</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3>5.2 Dirac 拉氏量与运动方程</h3>
+<p>$$\boxed{ \mathcal L=i\bar\psi\gamma^\mu\partial_\mu\psi-m\bar\psi\psi =\bar\psi(i\not!\partial-m)\psi }. \tag{5.103}$$</p>
+<p>$$(i\not!\partial-m)\psi=0,$$</p>
+<p>$$i(\partial_\mu\bar\psi)\gamma^\mu+m\bar\psi=0,$$</p>
+<p>$$(\partial^2+m^2)\psi=0.$$</p>
+<p>用途：第一式决定自由 Dirac 传播子；最后一式说明旋量场的每个分量也满足 KG 方程。</p>
+<h3>5.3 平面波旋量与场展开</h3>
+<p>正负能旋量满足</p>
+<p>$$\boxed{(\not p-m)u(\mathbf p,\lambda)=0}, \qquad \boxed{(\not p+m)v(\mathbf p,\lambda)=0}. \tag{5.145, 5.184}$$</p>
+<h3>Dirac 场平面波展开：必背</h3>
+<p>$$\boxed{ \psi(x)=\int\frac{d^3\mathbf p}{(2\pi)^3} \frac{1}{\sqrt{2E_{\mathbf p}}} \sum_{\lambda=\pm} \left[u(\mathbf p,\lambda)a_{\mathbf p,\lambda}e^{-ip\cdot x} +v(\mathbf p,\lambda)b_{\mathbf p,\lambda}^\dagger e^{ip\cdot x}\right] }. \tag{5.216}$$</p>
+<p>$$\boxed{ \bar\psi(x)=\int\frac{d^3\mathbf p}{(2\pi)^3} \frac{1}{\sqrt{2E_{\mathbf p}}} \sum_{\lambda=\pm} \left[\bar u(\mathbf p,\lambda)a_{\mathbf p,\lambda}^\dagger e^{ip\cdot x} +\bar v(\mathbf p,\lambda)b_{\mathbf p,\lambda}e^{-ip\cdot x}\right] }. \tag{5.218}$$</p>
+<p>用途：直接读出正<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E8%B4%B9%E7%B1%B3%E5%AD%90&amp;zhida_source=entity" rel="nofollow">费米子</a>与反费米子的四类外线规则。</p>
+<h3>5.4 正交归一与完备性</h3>
+<p>普通厄米内积：</p>
+<p>$$u^\dagger(\mathbf p,\lambda)u(\mathbf p,\lambda') =v^\dagger(\mathbf p,\lambda)v(\mathbf p,\lambda') =2E_{\mathbf p}\delta_{\lambda\lambda'},$$</p>
+<p>$$u^\dagger(\mathbf p,\lambda)v(-\mathbf p,\lambda')=0.$$</p>
+<p>Lorentz 不变归一化：</p>
+<p>$$\boxed{ \bar u(\mathbf p,\lambda)u(\mathbf p,\lambda') =2m\delta_{\lambda\lambda'} },$$</p>
+<p>$$\boxed{ \bar v(\mathbf p,\lambda)v(\mathbf p,\lambda') =-2m\delta_{\lambda\lambda'} },$$</p>
+<p>$$\bar u(\mathbf p,\lambda)v(\mathbf p,\lambda') =\bar v(\mathbf p,\lambda)u(\mathbf p,\lambda')=0. \tag{5.211}$$</p>
+<p>自旋求和（完备性）：</p>
+<p>$$\boxed{ \sum_{\lambda=\pm}u(\mathbf p,\lambda)\bar u(\mathbf p,\lambda) =\not p+m },$$</p>
+<p>$$\boxed{ \sum_{\lambda=\pm}v(\mathbf p,\lambda)\bar v(\mathbf p,\lambda) =\not p-m }. \tag{5.214}$$</p>
+<p>用途：把非极化振幅中的外线自旋求和化为 Dirac 矩阵求迹。</p>
+<p>易错点：$v\bar v$ 是 $\not p-m$，而 $\bar vv=-2m$。</p>
+<h3>5.5 <a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E6%AD%A3%E5%88%99%E9%87%8F%E5%AD%90%E5%8C%96&amp;zhida_source=entity" rel="nofollow">正则量子化</a></h3>
+<p>共轭动量：</p>
+<p>$$\pi=\frac{\partial\mathcal L}{\partial(\partial_0\psi)} =i\psi^\dagger.$$</p>
+<p>等时反对易关系：</p>
+<p>$${\psi_a(\mathbf x,t),\psi_b^\dagger(\mathbf y,t)} =\delta_{ab}\delta^{(3)}(\mathbf x-\mathbf y),$$</p>
+<p>$${\psi_a,\psi_b}={\psi_a^\dagger,\psi_b^\dagger}=0.$$</p>
+<p>产生湮灭算符：</p>
+<p>$${a_{\mathbf p,\lambda},a_{\mathbf q,\lambda'}^\dagger} ={b_{\mathbf p,\lambda},b_{\mathbf q,\lambda'}^\dagger} =(2\pi)^3\delta_{\lambda\lambda'}\delta^{(3)}(\mathbf p-\mathbf q),$$</p>
+<p>其余反对易子全为零。（讲义式 5.246）</p>
+<p>用途：反对易关系保证 Pauli 不相容原理，并使正规排序后的能量为正。</p>
+<p>正、反费米子单粒子态：</p>
+<p>$$|\mathbf p^+,\lambda\rangle =\sqrt{2E_{\mathbf p}},a_{\mathbf p,\lambda}^\dagger|0\rangle, \qquad |\mathbf p^-,\lambda\rangle =\sqrt{2E_{\mathbf p}},b_{\mathbf p,\lambda}^\dagger|0\rangle.$$</p>
+<p>$$\langle\mathbf q^\eta,\lambda'|\mathbf p^\eta,\lambda\rangle =2E_{\mathbf p}(2\pi)^3\delta_{\lambda\lambda'} \delta^{(3)}(\mathbf p-\mathbf q), \qquad \eta=\pm.$$</p>
+<p>一粒子子空间完备性：</p>
+<p>$$\mathbf 1_{1\text{-particle}} =\sum_{\eta=\pm}\sum_{\lambda=\pm} \int\frac{d^3\mathbf p}{(2\pi)^3,2E_{\mathbf p}} |\mathbf p^\eta,\lambda\rangle\langle\mathbf p^\eta,\lambda|.$$</p>
+<p>用途：完备性同时包含粒子/反粒子与两个螺旋度。</p>
+<p>正规排序后的守恒量：</p>
+<p>$$:H:=\int\frac{d^3\mathbf p}{(2\pi)^3}E_{\mathbf p} \sum_\lambda \left(a_{\mathbf p,\lambda}^\dagger a_{\mathbf p,\lambda} +b_{\mathbf p,\lambda}^\dagger b_{\mathbf p,\lambda}\right),$$</p>
+<p>$$\mathbf P=\int\frac{d^3\mathbf p}{(2\pi)^3}\mathbf p \sum_\lambda \left(a_{\mathbf p,\lambda}^\dagger a_{\mathbf p,\lambda} +b_{\mathbf p,\lambda}^\dagger b_{\mathbf p,\lambda}\right),$$</p>
+<p>$$Q=q\int\frac{d^3\mathbf p}{(2\pi)^3}\sum_\lambda \left(a_{\mathbf p,\lambda}^\dagger a_{\mathbf p,\lambda} -b_{\mathbf p,\lambda}^\dagger b_{\mathbf p,\lambda}\right).$$</p>
+<h3>5.6 常用旋量恒等式</h3>
+<p>Gordon 恒等式：</p>
+<p>$$\bar u(p')\gamma^\mu u(p) =\bar u(p')\left[ \frac{p'^\mu+p^\mu}{2m} +\frac{i\sigma^{\mu\nu}(p'-p)_\nu}{2m} \right]u(p).$$</p>
+<p>用途：把矢量流拆成对流项和磁矩项。</p>
+<p>Dirac <a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E7%9F%A9%E9%98%B5%E8%BF%B9&amp;zhida_source=entity" rel="nofollow">矩阵迹</a>：</p>
+<p>$$\operatorname{tr}(1)=4, \qquad \operatorname{tr}(\text{奇数个 }\gamma)=0,$$</p>
+<p>$$\operatorname{tr}(\gamma^\mu\gamma^\nu)=4g^{\mu\nu},$$</p>
+<p>$$\operatorname{tr}(\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma) =4\left(g^{\mu\nu}g^{\rho\sigma} -g^{\mu\rho}g^{\nu\sigma} +g^{\mu\sigma}g^{\nu\rho}\right),$$</p>
+<p>$$\operatorname{tr}(\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma\gamma^5) =-4i\epsilon^{\mu\nu\rho\sigma}. \tag{8.49--8.55}$$</p>
+<p>缩并：</p>
+<p>$$\gamma_\mu\gamma^\mu=4, \qquad \gamma_\mu\gamma^\nu\gamma^\mu=-2\gamma^\nu,$$</p>
+<p>$$\gamma_\mu\gamma^\nu\gamma^\rho\gamma^\mu=4g^{\nu\rho},$$</p>
+<p>$$\gamma_\mu\gamma^\nu\gamma^\rho\gamma^\sigma\gamma^\mu =-2\gamma^\sigma\gamma^\rho\gamma^\nu. \tag{8.60--8.63}$$</p>
+<p>斜线公式：</p>
+<p>$$\not p\not p=p^2, \qquad \operatorname{tr}(\not p\not k)=4p\cdot k,$$</p>
+<p>$$\operatorname{tr}(\not p\not k\not q\not l) =4\left[(p\cdot k)(q\cdot l)-(p\cdot q)(k\cdot l)+(p\cdot l)(k\cdot q)\right].$$</p>
+<h3>旋量场速背清单</h3>
+<ol>
+<li>
+${\gamma^\mu,\gamma^\nu}=2g^{\mu\nu}$。</li>
+<li>
+$\mathcal L=\bar\psi(i\not!\partial-m)\psi$。</li>
+<li>
+$(\not p-m)u=0$，$(\not p+m)v=0$。</li>
+<li>
+$\psi\sim ua e^{-ipx}+vb^\dagger e^{ipx}$。</li>
+<li>量子化用反对易关系。</li>
+<li>
+$\sum u\bar u=\not p+m$，$\sum v\bar v=\not p-m$。</li>
+<li>
+$\bar uu=2m$，$\bar vv=-2m$。</li>
+<li>共轭后手征投影互换：$\bar\psi_L=\bar\psi P_R$。</li>
+</ol>
+<hr>
+<h3>6. 量子场的相互作用</h3>
+<h3>6.1 相互作用绘景与 Dyson 展开</h3>
+<p>关键词：自由场承担时间演化、相互作用进入 $S$ 矩阵、时间排序。</p>
+<p>将哈密顿量分解为</p>
+<p>$$H=H_0+H_1.$$</p>
+<p>相互作用绘景中的场按 $H_0$ 演化，态按 $H_1$ 演化。<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E6%97%B6%E9%97%B4%E6%BC%94%E5%8C%96%E7%AE%97%E7%AC%A6&amp;zhida_source=entity" rel="nofollow">时间演化算符</a>满足</p>
+<p>$$i\frac{\partial}{\partial t}U(t,t_0)=H_1(t)U(t,t_0),$$</p>
+<p>$$U(t,t_0)=T\exp\left[-i\int_{t_0}^{t}dt',H_1(t')\right].$$</p>
+<p>散射矩阵：</p>
+<p>$$\boxed{ S=T\exp\left[-i\int d^4x,\mathcal H_1(x)\right] }.$$</p>
+<p>若相互作用不含场的<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E6%97%B6%E9%97%B4%E5%AF%BC%E6%95%B0&amp;zhida_source=entity" rel="nofollow">时间导数</a>且 $\mathcal H_1=-\mathcal L_1$，则</p>
+<p>$$\boxed{ S=T\exp\left[i\int d^4x,\mathcal L_1(x)\right] }.$$</p>
+<p>Dyson 级数：</p>
+<p>$$S=1+\sum_{n=1}^\infty\frac{(-i)^n}{n!} \int d^4x_1\cdots d^4x_n, T!\left[\mathcal H_1(x_1)\cdots\mathcal H_1(x_n)\right].$$</p>
+<p>用途：每一个 $\mathcal H_1$ 对应一个顶点，$n$ 阶项对应 $n$ 个顶点。</p>
+<h3>6.2 Wick 定理</h3>
+<p><a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E6%AD%A3%E8%A7%84%E4%B9%98%E7%A7%AF&amp;zhida_source=entity" rel="nofollow">正规乘积</a>：所有产生算符放在湮灭算符左侧；交换两个费米子算符产生负号。</p>
+<p>两个场的缩并定义为</p>
+<p>$$\overbrace{\Phi_a(x)\Phi_b(y)}^{\text{缩并}} \equiv\langle0|T[\Phi_a(x)\Phi_b(y)]|0\rangle.$$</p>
+<p>Wick 定理的背诵形式：</p>
+<p>$$T[\Phi_1\cdots\Phi_n] =N\left[\Phi_1\cdots\Phi_n +\text{所有单次缩并} +\text{所有二次缩并}+\cdots\right].$$</p>
+<p>用途：把时序乘积变成传播子的乘积，进而画成 Feynman 图。</p>
+<p>费米子符号规则：为了把参与缩并的费米子场移到相邻位置，每交换一次相邻费米子场就多一个负号。</p>
+<h3>6.3 Feynman 传播子总表</h3>
+<h3>实标量场</h3>
+<p>$$D_F(x-y) \equiv\langle0|T[\phi(x)\phi(y)]|0\rangle =\int\frac{d^4p}{(2\pi)^4} \frac{i}{p^2-m^2+i\epsilon}e^{-ip\cdot(x-y)}. \tag{6.210}$$</p>
+<p><a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E5%8A%A8%E9%87%8F%E7%A9%BA%E9%97%B4&amp;zhida_source=entity" rel="nofollow">动量空间</a>内线规则：</p>
+<p>$$\boxed{\frac{i}{p^2-m^2+i\epsilon}}.$$</p>
+<h3>复标量场</h3>
+<p>非零缩并为</p>
+<p>$$D_F(x-y) =\langle0|T[\phi(x)\phi^\dagger(y)]|0\rangle =\int\frac{d^4p}{(2\pi)^4} \frac{i}{p^2-m^2+i\epsilon}e^{-ip\cdot(x-y)}. \tag{6.222}$$</p>
+<p>$$\langle0|T[\phi(x)\phi(y)]|0\rangle =\langle0|T[\phi^\dagger(x)\phi^\dagger(y)]|0\rangle=0.$$</p>
+<p>用途：复标量传播子必须连接 $\phi$ 与 $\phi^\dagger$，粒子数流箭头连续。</p>
+<h3>有质量实矢量场</h3>
+<p>完整正则传播子包含一个非协变接触项：</p>
+<p>$$\Delta_F^{\mu\nu}(x-y) =\int\frac{d^4p}{(2\pi)^4} \frac{-i\left(g^{\mu\nu}-p^\mu p^\nu/m_A^2\right)} {p^2-m_A^2+i\epsilon}e^{-ip\cdot(x-y)} -\frac{i}{m_A^2}g^{\mu0}g^{\nu0}\delta^{(4)}(x-y). \tag{6.244}$$</p>
+<p>讲义第 7.4 节说明接触项与相互作用哈密顿量中的非协变项抵消，因此实际 Feynman 内线只保留协变部分：</p>
+<p>$$\boxed{ \frac{-i\left(g^{\mu\nu}-p^\mu p^\nu/m_A^2\right)} {p^2-m_A^2+i\epsilon} }. \tag{6.245}$$</p>
+<h3>无质量实矢量场（Feynman 规范）</h3>
+<p>$$\Delta_F^{\mu\nu}(x-y) =\int\frac{d^4p}{(2\pi)^4} \frac{-ig^{\mu\nu}}{p^2+i\epsilon}e^{-ip\cdot(x-y)}. \tag{6.253}$$</p>
+<p>动量空间内线规则：</p>
+<p>$$\boxed{\frac{-ig^{\mu\nu}}{p^2+i\epsilon}}.$$</p>
+<h3>Dirac 旋量场</h3>
+<p>$$S_F(x-y) \equiv\langle0|T[\psi(x)\bar\psi(y)]|0\rangle =\int\frac{d^4p}{(2\pi)^4} \frac{i(\not p+m)}{p^2-m^2+i\epsilon}e^{-ip\cdot(x-y)}. \tag{6.267}$$</p>
+<p>等价地，</p>
+<p>$$\boxed{ \frac{i(\not p+m)}{p^2-m^2+i\epsilon} =\frac{i}{\not p-m+i\epsilon} }.$$</p>
+<p>反向缩并满足</p>
+<p>$$\langle0|T[\bar\psi(x)\psi(y)]|0\rangle =-S_F(y-x)^{\mathsf T},$$</p>
+<p>负号来自费米子时序交换。</p>
+<h3>传播子易错点</h3>
+<ul>
+<li>标量传播子分子是 $i$，<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E5%85%89%E5%AD%90%E4%BC%A0%E6%92%AD%E5%AD%90&amp;zhida_source=entity" rel="nofollow">光子传播子</a>分子是 $-ig^{\mu\nu}$。</li>
+<li>
+$i\epsilon$ 在树图远离极点时常可略，但圈积分中不能随意略去。</li>
+<li>
+$S_F$ 是旋量空间矩阵，写费米子链时矩阵次序不能交换。</li>
+<li>有质量矢量传播子的 $p^\mu p^\nu/m_A^2$ 前面与 $g^{\mu\nu}$ 同在括号内，整体为 $-i$。</li>
+</ul>
+<h3>6.4 散射与<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E8%A1%B0%E5%8F%98&amp;zhida_source=entity" rel="nofollow">衰变</a>的通用公式</h3>
+<p>定义不变振幅：</p>
+<p>$$\langle f|iT|i\rangle =i\mathcal M(2\pi)^4\delta^{(4)}(p_i-p_f), \qquad S=1+iT.$$</p>
+<p>通用 $2\to n$ <a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E6%88%AA%E9%9D%A2&amp;zhida_source=entity" rel="nofollow">截面</a>：</p>
+<p>$$d\sigma =\frac{1}{4E_1E_2|\mathbf v_1-\mathbf v_2|} \frac{1}{S_f}|\mathcal M|^2 (2\pi)^4\delta^{(4)}!\left(p_1+p_2-\sum_f p_f\right) \prod_f\frac{d^3\mathbf p_f}{(2\pi)^3,2E_f}.$$</p>
+<p>其中 $S_f$ 是末态<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E5%85%A8%E5%90%8C%E7%B2%92%E5%AD%90&amp;zhida_source=entity" rel="nofollow">全同粒子</a>的对称性因子。</p>
+<p>通用 $1\to n$ <a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E8%A1%B0%E5%8F%98%E5%AE%BD%E5%BA%A6&amp;zhida_source=entity" rel="nofollow">衰变宽度</a>：</p>
+<p>$$d\Gamma =\frac{1}{2E_i}\frac{1}{S_f}|\mathcal M|^2 (2\pi)^4\delta^{(4)}!\left(p_i-\sum_f p_f\right) \prod_f\frac{d^3\mathbf p_f}{(2\pi)^3,2E_f}.$$</p>
+<h3>第 6 章速背清单</h3>
+<ol>
+<li>
+$S=T\exp[-i\int d^4x,\mathcal H_1]$。</li>
+<li>若 $\mathcal H_1=-\mathcal L_1$，则 $S=T\exp[i\int\mathcal L_1]$。</li>
+<li>缩并就是时序二点真空期待值，也就是传播子。</li>
+<li>标量：$i/(p^2-m^2+i\epsilon)$。</li>
+<li>Dirac：$i(\not p+m)/(p^2-m^2+i\epsilon)$。</li>
+<li>光子：$-ig^{\mu\nu}/(p^2+i\epsilon)$。</li>
+<li>
+$\langle f|iT|i\rangle=i\mathcal M(2\pi)^4\delta^{(4)}(p_i-p_f)$。</li>
+</ol>
+<hr>
+<h3>7. Feynman 图与动量空间规则</h3>
+<h3>7.1 从图写振幅的通用顺序</h3>
+<ol>
+<li>画出指定微扰阶所有拓扑不等价的图。</li>
+<li>标记所有外线动量、极化或螺旋度，以及内部动量方向。</li>
+<li>每条外线写外线因子，每条内线写传播子，每个顶点写顶点因子。</li>
+<li>每个顶点满足四维<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E5%8A%A8%E9%87%8F%E5%AE%88%E6%81%92&amp;zhida_source=entity" rel="nofollow">动量守恒</a>。</li>
+<li>每个独立圈动量给出</li>
+</ol>
+<p>$$\int\frac{d^4l}{(2\pi)^4}.$$</p>
+<ol>
+<li>每个封闭费米子圈额外乘 $-1$，并对圈上的 Dirac 矩阵乘积取迹。</li>
+<li>除以图的对称性因子。</li>
+<li>同一过程有多个费米子图时，必须确定图之间的相对负号。</li>
+</ol>
+<h3>7.2 外线规则：必背</h3>
+<h3>标量与矢量外线</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>外线</th>
+<th>动量空间因子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实标量入射或出射</td>
+<td>1</td>
+</tr>
+<tr>
+<td>复标量粒子/反粒子入射或出射</td>
+<td>1，但保持荷流箭头连续</td>
+</tr>
+<tr>
+<td>有质量矢量入射</td>
+<td>\epsilon^\mu(p,\lambda)</td>
+</tr>
+<tr>
+<td>有质量矢量出射</td>
+<td>\epsilon^{\mu *}(p,\lambda)</td>
+</tr>
+<tr>
+<td>光子入射</td>
+<td>\epsilon^\mu(p,\lambda)</td>
+</tr>
+<tr>
+<td>光子出射</td>
+<td>\epsilon^{\mu *}(p,\lambda)</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3>费米子外线</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>物理外线</th>
+<th>因子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>正费米子入射</td>
+<td>u(p,\lambda)</td>
+</tr>
+<tr>
+<td>正费米子出射</td>
+<td>\bar u(p,\lambda)</td>
+</tr>
+<tr>
+<td>反费米子入射</td>
+<td>\bar v(p,\lambda)</td>
+</tr>
+<tr>
+<td>反费米子出射</td>
+<td>v(p,\lambda)</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p>背诵法：正粒子用 $u$，反粒子用 $v$；入射因子放在费米子链右端，出射因子放在左端。</p>
+<p>费米子链的矩阵乘积沿“逆着费米子箭头”的方向书写。</p>
+<h3>7.3 Yukawa 理论</h3>
+<p>讲义第 7 章采用</p>
+<p>$$\mathcal L =\frac12(\partial\phi)^2-\frac12m_\phi^2\phi^2 +\bar\psi(i\not!\partial-m_\psi)\psi -\kappa\phi\bar\psi\psi.$$</p>
+<p>顶点：</p>
+<p>$$\boxed{-i\kappa}.$$</p>
+<p>用途：从 $\mathcal L_{\rm int}=-\kappa\phi\bar\psi\psi$ 剥去三个场，再乘 $i$。</p>
+<h3>Yukawa 动量空间规则</h3>
+<ul>
+<li>正费米子入射/出射：$u,\bar u$。</li>
+<li>反费米子入射/出射：$\bar v,v$。</li>
+<li>实标量入射或出射：$1$。</li>
+<li>实标量内线：$\displaystyle i/(p^2-m_\phi^2+i\epsilon)$。</li>
+<li>Dirac 内线：$\displaystyle i(\not p+m_\psi)/(p^2-m_\psi^2+i\epsilon)$。</li>
+<li>Yukawa 顶点：$-i\kappa$。</li>
+<li>每个顶点四维动量守恒。</li>
+<li>每个圈：$\displaystyle \int d^4l/(2\pi)^4$。</li>
+<li>每个封闭费米子圈：额外 $-1$ 并取迹。</li>
+<li>最后检查图的对称性因子与不同费米子图之间的相对符号。</li>
+</ul>
+<p>例：$\phi\to\psi\bar\psi$ 的树级振幅</p>
+<p>$$i\mathcal M=-i\kappa,\bar u(p,\lambda)v(q,\lambda'). \tag{7.101}$$</p>
+<h3>7.4 $\phi^4$ 理论与对称性因子</h3>
+<p>$$\mathcal L =\frac12(\partial\phi)^2-\frac12m^2\phi^2 -\frac{\lambda}{4!}\phi^4.$$</p>
+<p>四标量顶点：</p>
+<p>$$\boxed{-i\lambda}. \tag{7.117}$$</p>
+<p>用途：相互作用项里的 $1/4!$ 正好抵消四个全同场的 $4!$ 种连接方式。</p>
+<h3>
+$\phi^4$ 动量空间规则</h3>
+<ul>
+<li>每条外标量线：$1$。</li>
+<li>每条内标量线：$\displaystyle i/(p^2-m^2+i\epsilon)$。</li>
+<li>每个四标量顶点：$-i\lambda$。</li>
+<li>每个顶点四维动量守恒。</li>
+<li>每个独立圈动量：$\displaystyle \int d^4l/(2\pi)^4$。</li>
+<li>每张图的<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E8%A1%A8%E8%BE%BE%E5%BC%8F&amp;zhida_source=entity" rel="nofollow">表达式</a>除以图的对称性因子 $S$。</li>
+</ul>
+<p>树级 $\phi\phi\to\phi\phi$：</p>
+<p>$$i\mathcal M=-i\lambda. \tag{7.118}$$</p>
+<h3>对称性因子的识别</h3>
+<p>每张图的代数表达式需除以对称性因子 $S$。常见来源：</p>
+<ul>
+<li>一条实标量自环的两端不可区分：因子 $2$。</li>
+<li>两个全同自环互换：再乘 $2!$。</li>
+<li>
+$n$ 条全同内线连接同一对顶点：因子 $n!$。</li>
+<li>若若干顶点互换后图完全不变，还要乘相应顶点置换数。</li>
+</ul>
+<p>讲义示例：</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>图形结构</th>
+<th>对称性因子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一个 \phi^4 顶点上的单自环自能图</td>
+<td>2</td>
+</tr>
+<tr>
+<td>一个 \phi^4 顶点上的双自环真空图</td>
+<td>2\times2\times2=8</td>
+</tr>
+<tr>
+<td>两个顶点间三条全同内线</td>
+<td>3!=6</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p>易错点：图的对称性因子与末态全同粒子的相空间因子不是同一个概念；两者都可能出现。</p>
+<h3>7.5 一般内线规则总表</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>场</th>
+<th>动量空间传播子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实或复标量</td>
+<td>\displaystyle \frac{i}{p^2-m^2+i\epsilon}</td>
+</tr>
+<tr>
+<td>Dirac</td>
+<td>\displaystyle \frac{i(\not p+m)}{p^2-m^2+i\epsilon}</td>
+</tr>
+<tr>
+<td>有质量实矢量</td>
+<td>\displaystyle \frac{-i(g^{\mu\nu}-p^\mu p^\nu/m_A^2)}{p^2-m_A^2+i\epsilon}</td>
+</tr>
+<tr>
+<td>无质量实矢量，Feynman 规范</td>
+<td>\displaystyle \frac{-ig^{\mu\nu}}{p^2+i\epsilon}</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3>7.6 费米子负号</h3>
+<p>必须额外注意三类负号：</p>
+<ol>
+<li>每个封闭费米子圈乘 $-1$。</li>
+<li>交换两个全同外费米子得到相对负号。</li>
+<li>将费米子场重新排序以解开缩并线时，每次奇置换产生负号。</li>
+</ol>
+<p>单凭图形有时看不出不同费米子图之间的相对符号；此时应回到 Wick 缩并与外态算符次序。</p>
+<h3>第 7 章速背清单</h3>
+<ol>
+<li>自由拉氏量决定线，相互作用拉氏量决定点。</li>
+<li>顶点因子通常是“剥去场后乘 $i$”并计入全同场组合数。</li>
+<li>外费米子四件套：$u,\bar u,\bar v,v$。</li>
+<li>圈积分：$\int d^4l/(2\pi)^4$。</li>
+<li>封闭费米子圈：$-1$ 加 Dirac 迹。</li>
+<li>
+$\phi^4/4!$ 顶点是 $-i\lambda$。</li>
+<li>Yukawa 顶点是 $-i\kappa$。</li>
+<li>每张图还要检查对称性因子与图间相对符号。</li>
+</ol>
+<hr>
+<h3>8. <a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E9%87%8F%E5%AD%90%E7%94%B5%E5%8A%A8%E5%8A%9B%E5%AD%A6&amp;zhida_source=entity" rel="nofollow">量子电动力学</a>（QED）</h3>
+<h3>8.1 $U(1)$ 规范对称性</h3>
+<p>关键词：局域相位变换、<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E5%8D%8F%E5%8F%98%E5%AF%BC%E6%95%B0&amp;zhida_source=entity" rel="nofollow">协变导数</a>、规范场、电磁流、光子无质量。</p>
+<p>$$\psi_f'(x)=e^{iQ_f\theta(x)}\psi_f(x),$$</p>
+<p>$$A_\mu'(x)=A_\mu(x)-\frac1e\partial_\mu\theta(x). \tag{8.4, 8.7}$$</p>
+<p>协变导数：</p>
+<p>$$\boxed{D_\mu=\partial_\mu+iQ_feA_\mu}. \tag{8.6}$$</p>
+<p>$$[D_\mu\psi_f]'=e^{iQ_f\theta(x)}D_\mu\psi_f, \qquad [D_\mu,D_\nu]=iQ_feF_{\mu\nu}.$$</p>
+<h3>8.2 QED 拉氏量与电磁流</h3>
+<p>$$\boxed{ \mathcal L_{\rm QED} =\sum_f\left(i\bar\psi_f\gamma^\mu D_\mu\psi_f -m_f\bar\psi_f\psi_f\right) -\frac14F_{\mu\nu}F^{\mu\nu} }. \tag{8.10}$$</p>
+<p>展开协变导数：</p>
+<p>$$\mathcal L_{\rm int} =-\sum_fQ_feA_\mu\bar\psi_f\gamma^\mu\psi_f. \tag{8.11}$$</p>
+<p>电磁流：</p>
+<p>$$J_{\rm EM}^\mu =\sum_fQ_fe\bar\psi_f\gamma^\mu\psi_f, \qquad \partial_\mu J_{\rm EM}^\mu=0,$$</p>
+<p>$$\mathcal L_{\rm int}=-A_\mu J_{\rm EM}^\mu.$$</p>
+<p>运动方程：</p>
+<p>$$\partial_\mu F^{\mu\nu}=J_{\rm EM}^\nu, \qquad (i\gamma^\mu D_\mu-m_f)\psi_f=0.$$</p>
+<p>易错点：讲义定义 $Q_f$ 为以 $e&amp;gt;0$ 为单位的正费米子电荷；电子、$\mu$ 子和 $\tau$ 子均有 $Q_f=-1$。</p>
+<h3>8.3 QED 动量空间 Feynman 规则</h3>
+<p>计算时加入规范固定项</p>
+<p>$$-\frac{1}{2\xi}(\partial_\mu A^\mu)^2,$$</p>
+<p>讲义采用 Feynman 规范 $\xi=1$。</p>
+<h3>外线</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>外线</th>
+<th>因子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>f 入射</td>
+<td>u(p,\lambda)</td>
+</tr>
+<tr>
+<td>f 出射</td>
+<td>\bar u(p,\lambda)</td>
+</tr>
+<tr>
+<td>\bar f 入射</td>
+<td>\bar v(p,\lambda)</td>
+</tr>
+<tr>
+<td>\bar f 出射</td>
+<td>v(p,\lambda)</td>
+</tr>
+<tr>
+<td>光子入射</td>
+<td>\epsilon^\mu(p,\lambda)</td>
+</tr>
+<tr>
+<td>光子出射</td>
+<td>\epsilon^{\mu *}(p,\lambda)</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3>内线与顶点</h3>
+<p>费米子传播子：</p>
+<p>$$\boxed{ \frac{i(\not p+m_f)}{p^2-m_f^2+i\epsilon} }.$$</p>
+<p>光子传播子：</p>
+<p>$$\boxed{ \frac{-ig^{\mu\nu}}{p^2+i\epsilon} }\qquad(\text{Feynman 规范}).$$</p>
+<p>QED 顶点：</p>
+<p>$$\boxed{-iQ_fe\gamma^\mu}. \tag{8.36 后的规则 9}$$</p>
+<p>电子顶点因为 $Q_e=-1$，所以</p>
+<p>$$-iQ_ee\gamma^\mu=+ie\gamma^\mu.$$</p>
+<p>易错点：不要机械背成 $-ie\gamma^\mu$；在讲义的 $Q_f$ 记号下必须先代入费米子的 $Q_f$。</p>
+<p>每个 QED 顶点只能连接同一种 $f$ 的费米子线与一条<a href="https://zhida.zhihu.com/search?content_id=278771573&amp;content_type=Article&amp;match_order=1&amp;q=%E5%85%89%E5%AD%90%E7%BA%BF&amp;zhida_source=entity" rel="nofollow">光子线</a>。</p>
+<h3>QED 规则的其余组成</h3>
+<ul>
+<li>每个顶点四维动量守恒。</li>
+<li>每个独立圈动量给出 $\displaystyle \int d^4l/(2\pi)^4$。</li>
+<li>每个封闭费米子圈额外乘 $-1$，并对圈上的 Dirac 矩阵乘积取迹。</li>
+<li>每张图除以它的对称性因子。</li>
+<li>多张含外部全同费米子的图必须检查交换带来的相对负号。</li>
+</ul>
+<h3>8.4 非极化振幅的自旋与极化求和</h3>
+<p>若每个入射自旋 $1/2$ 粒子有两个自旋态，则非极化振幅模方对每个入射粒子除以 $2$，对所有末态自旋求和：</p>
+<p>$$\overline{|\mathcal M|^2} =\frac{1}{N_{\rm initial}} \sum_{\text{initial spins}} \sum_{\text{final spins}}|\mathcal M|^2.$$</p>
+<p>使用</p>
+<p>$$\sum_\lambda u(p,\lambda)\bar u(p,\lambda)=\not p+m, \qquad \sum_\lambda v(p,\lambda)\bar v(p,\lambda)=\not p-m$$</p>
+<p>把每条开放费米子链的自旋求和化成一个迹。</p>
+<p>若外光子所接振幅满足 Ward 恒等式，则</p>
+<p>$$\sum_{\lambda=\pm}\epsilon_\mu^*(p,\lambda)\epsilon_\nu(p,\lambda) \to-g_{\mu\nu}.$$</p>
+<h3>8.5 Ward 恒等式与规范不变性</h3>
+<p>对外光子振幅写成</p>
+<p>$$\mathcal M=\epsilon_\mu(p)\mathcal M^\mu.$$</p>
+<p>规范不变性要求</p>
+<p>$$\boxed{p_\mu\mathcal M^\mu=0}.$$</p>
+<p>费米子线上的核心恒等式：</p>
+<p>$$\not k=S_F^{-1}(p+k)-S_F^{-1}(p),$$</p>
+<p>用途：把纵向光子插入同一费米子线的所有位置后形成望远镜相消。</p>
+<h3>8.6 典型树图：$e^+e^-\to\mu^+\mu^-$</h3>
+<p>取入射 $e^-(k_1),e^+(k_2)$，出射 $\mu^-(p_1),\mu^+(p_2)$，$q=k_1+k_2$。讲义使用 $Q_e=Q_\mu=-1$，得到</p>
+<p>$$i\mathcal M =\bar v(k_2)(ie\gamma^\mu)u(k_1) \frac{-ig_{\mu\nu}}{q^2} \bar u(p_1)(ie\gamma^\nu)v(p_2),$$</p>
+<p>$$\boxed{ i\mathcal M =\frac{ie^2}{q^2} \big[\bar v(k_2)\gamma^\mu u(k_1)\big] \big[\bar u(p_1)\gamma_\mu v(p_2)\big] }. \tag{8.37}$$</p>
+<p>用途：练习外线四件套、光子传播子、QED 顶点以及费米子链的次序。</p>
+<p>超相对论极限 $E_{\rm CM}\gg m_\mu,m_e$：</p>
+<p>$$\frac{d\sigma}{d\Omega} \simeq\frac{\alpha^2}{4E_{\rm CM}^2}(1+\cos^2\theta),$$</p>
+<p>$$\sigma\simeq\frac{4\pi\alpha^2}{3E_{\rm CM}^2}. \tag{8.98}$$</p>
+<h3>8.7 Mandelstam 变量</h3>
+<p>对 $1+2\to3+4$：</p>
+<p>$$s=(p_1+p_2)^2, \qquad t=(p_1-p_3)^2, \qquad u=(p_1-p_4)^2,$$</p>
+<p>$$s+t+u=m_1^2+m_2^2+m_3^2+m_4^2.$$</p>
+<p>用途：用 Lorentz 不变量表达振幅、截面与交叉过程。</p>
+<h3>QED 速背清单</h3>
+<ol>
+<li>
+$D_\mu=\partial_\mu+iQ_feA_\mu$。</li>
+<li>
+$\mathcal L_{\rm int}=-Q_feA_\mu\bar\psi_f\gamma^\mu\psi_f$。</li>
+<li>QED 顶点：$-iQ_fe\gamma^\mu$。</li>
+<li>电子的 $Q_e=-1$，故电子顶点为 $+ie\gamma^\mu$。</li>
+<li>Feynman 规范光子传播子：$-ig^{\mu\nu}/(p^2+i\epsilon)$。</li>
+<li>非极化计算：初态平均、末态求和、旋量链化迹。</li>
+<li>外光子 Ward 恒等式：$p_\mu\mathcal M^\mu=0$。</li>
+<li>
+$\alpha=e^2/(4\pi)$。</li>
+</ol>
+<hr>
+<h3>9. 考前总速查表</h3>
+<h3>9.1 四种自由场展开或外线信息</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>场</th>
+<th>最核心记忆</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实标量</td>
+<td>\phi\sim ae^{-ipx}+a^\dagger e^{ipx}</td>
+</tr>
+<tr>
+<td>复标量</td>
+<td>\phi\sim ae^{-ipx}+b^\dagger e^{ipx}</td>
+</tr>
+<tr>
+<td>Dirac</td>
+<td>\psi\sim ua e^{-ipx}+vb^\dagger e^{ipx}</td>
+</tr>
+<tr>
+<td>实矢量</td>
+<td>A^\mu\sim\epsilon^\mu a e^{-ipx}+\epsilon^{\mu *}a^\dagger e^{ipx}</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p>所有展开都带</p>
+<p>$$\int\frac{d^3\mathbf p}{(2\pi)^3}\frac{1}{\sqrt{2E_{\mathbf p}}}.$$</p>
+<h3>9.2 三个最常用传播子</h3>
+<p>$$\text{标量：}\quad \frac{i}{p^2-m^2+i\epsilon},$$</p>
+<p>$$\text{Dirac：}\quad \frac{i(\not p+m)}{p^2-m^2+i\epsilon},$$</p>
+<p>$$\text{光子：}\quad \frac{-ig^{\mu\nu}}{p^2+i\epsilon}.$$</p>
+<h3>9.3 三个最常用顶点</h3>
+<p>$$\phi^4:\ -i\lambda, \qquad \text{Yukawa}:\ -i\kappa, \qquad \text{QED}:\ -iQ_fe\gamma^\mu.$$</p>
+<h3>9.4 外费米子四件套</h3>
+<p>$$f_{\rm in}:u,\qquad f_{\rm out}:\bar u,\qquad \bar f_{\rm in}:\bar v,\qquad \bar f_{\rm out}:v.$$</p>
+<h3>9.5 一张图最后检查什么</h3>
+<ul>
+<li>外线因子是否对应正确。</li>
+<li>费米子矩阵是否按逆箭头方向排列。</li>
+<li>每个顶点是否动量守恒。</li>
+<li>每个独立圈是否有 $\int d^4l/(2\pi)^4$。</li>
+<li>封闭费米子圈是否乘 $-1$ 并取迹。</li>
+<li>是否需要除以图的对称性因子。</li>
+<li>多张费米子图之间的相对负号是否正确。</li>
+<li>
+$i\epsilon$、质量和 Lorentz 指标是否漏写。</li>
+</ul></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://Blinder32.github.io/gemzhang.github.io">真理尽头</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if(""!=""){
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行 "+diffDay+" 天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.disabled=true;
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","Blinder32/gemzhang.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+
+
+</script>
+<script>MathJax = {tex: {inlineMath: [["$", "$"]]}};</script><script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</html>
